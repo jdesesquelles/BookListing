@@ -1,13 +1,10 @@
 package co.fabrk.booklisting;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Menu;
@@ -17,32 +14,13 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import java.util.ArrayList;
-import java.util.HashMap;
-
 import co.fabrk.booklisting.model.GBook;
 
-public class SearchBooks extends AppCompatActivity implements FetchBookList.BookListListener {
+public class SearchBooks extends AppCompatActivity {
 
-    @Override
-    public void updateBookArrayList(ArrayList<GBook> bookArrayList) {
-        books_list_view.swapAdapter(new BookAdapter(bookArrayList), true);
-//        mBookArrayList = bookArrayList;
-    }
+    BookPresenter presenter;
 
-    private static final String TAG = "SearchBooks";
-
-    EditText search_books_edit_text_search;
-    ImageView emptyView;
-    ImageButton searchButton;
-    RecyclerView books_list_view;
-    ArrayList<GBook> mBookArrayList = new ArrayList<>();
-
-    public void startSearch(String query) {
-        FetchBookList fetchBookListTask = new FetchBookList(this);
-        fetchBookListTask.execute(query);
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,31 +28,8 @@ public class SearchBooks extends AppCompatActivity implements FetchBookList.Book
         setContentView(R.layout.activity_search_books);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        // Init views
-        search_books_edit_text_search = (EditText) findViewById(R.id.search_books_edit_text_search);
-        searchButton = (ImageButton) findViewById(R.id.searchButton);
-        emptyView = (ImageView) findViewById(R.id.empty_view);
-        books_list_view = (RecyclerView) findViewById(R.id.books_recycler_view);
-        assert books_list_view != null;
-        setupRecyclerView(books_list_view, null);
-
-        searchButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startSearch(search_books_edit_text_search.getText().toString());
-            }
-        });
-
-
+        presenter = new BookPresenter((View) findViewById(R.id.root_view));
     }
-
-    private void setupRecyclerView(RecyclerView recyclerView, ArrayList<GBook> bookArrayList) {
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setAdapter(new BookAdapter(bookArrayList));
-    }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -98,9 +53,7 @@ public class SearchBooks extends AppCompatActivity implements FetchBookList.Book
         return super.onOptionsItemSelected(item);
     }
 
-
     // RecyclerView Adapter
-
     public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookAdapterViewHolder> {
         private ArrayList<GBook> mBookArrayList;
 
@@ -108,7 +61,9 @@ public class SearchBooks extends AppCompatActivity implements FetchBookList.Book
             mBookArrayList = bookArrayList;
         }
 
-
+        public BookAdapter() {
+            mBookArrayList = null;
+        }
 
         public class BookAdapterViewHolder extends RecyclerView.ViewHolder {
             public final TextView textview_title;
@@ -151,12 +106,71 @@ public class SearchBooks extends AppCompatActivity implements FetchBookList.Book
         public void swapData(ArrayList<GBook> bookArrayList) {
             mBookArrayList = bookArrayList;
             notifyDataSetChanged();
-            // TODO: 18/12/16 implement interface and control to setVisibility in view object
-//            if (0 == bookArrayList.size()) {
-//                emptyView.setVisibility(View.VISIBLE);
-//
-//            }
-//            emptyView.setVisibility(View.GONE);
         }
+    }
+
+    private class BookPresenter implements SearchBookPresenter, FetchBookList.BookListCaller {
+
+        private BookView mBookView;
+        int currentPage =0;
+
+        public BookPresenter(View view) {
+            mBookView = new BookView(view);
+            mBookView.searchButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    loadBookList(mBookView.search_books_edit_text_search.getText().toString());
+                }
+            });
+        }
+
+        @Override
+        public void loadBookList(String query) {
+            FetchBookList fetchBookListTask = new FetchBookList(this);
+            fetchBookListTask.execute(query, String.valueOf(currentPage));
+        }
+
+        @Override
+        public void updateBookList(ArrayList<GBook> bookArrayList) {
+            mBookView.showBookList(new BookAdapter(bookArrayList));
+        }
+
+        private class BookView implements SearchBookView{
+            View mRootView;
+            EditText search_books_edit_text_search;
+            ImageView emptyView;
+            ImageButton searchButton;
+            RecyclerView books_list_view;
+
+            public BookView(View rootView) {
+                this.mRootView = rootView;
+                search_books_edit_text_search = (EditText) findViewById(R.id.search_books_edit_text_search);
+                searchButton = (ImageButton) findViewById(R.id.searchButton);
+                emptyView = (ImageView) findViewById(R.id.empty_view);
+                books_list_view = (RecyclerView) findViewById(R.id.books_recycler_view);
+                setupRecyclerView(books_list_view);
+            }
+
+            private void setupRecyclerView(RecyclerView recyclerView) {
+                recyclerView.setLayoutManager(new LinearLayoutManager(mRootView.getContext()));
+                recyclerView.setHasFixedSize(true);
+                recyclerView.setAdapter(new BookAdapter());
+            }
+
+            @Override
+            public void showBookList(BookAdapter bookAdapter) {
+                mBookView.books_list_view.swapAdapter(bookAdapter, true);
+            }
+        }
+
+    }
+
+
+    private interface SearchBookView {
+        void showBookList(BookAdapter bookAdapter);
+    }
+
+    private interface SearchBookPresenter {
+        void loadBookList(String query);
     }
 }

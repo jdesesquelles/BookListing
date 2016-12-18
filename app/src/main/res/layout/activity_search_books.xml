@@ -2,6 +2,7 @@
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
@@ -63,26 +64,3 @@
     </RelativeLayout>
 
 </android.support.design.widget.CoordinatorLayout>
-
-
-    <!--<FrameLayout--><!--android:layout_width="match_parent"--><!--android:layout_height="match_parent"--><!--android:layout_weight="5">-->
-
-    <!--<EditText-->
-    <!--android:id="@+id/search_books_edit_text_search"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent"-->
-    <!--android:layout_gravity="bottom"-->
-    <!--android:layout_margin="@dimen/editable_textview_search_margin"-->
-    <!--android:textSize="32sp"-->
-    <!--android:layout_marginStart="@dimen/editable_textview_search_margin_start"-->
-    <!--android:hint="@string/edit_text_search_text" />-->
-
-    <!--<android.support.design.widget.FloatingActionButton-->
-    <!--android:id="@+id/fab_search"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_gravity="bottom|end"-->
-    <!--android:layout_margin="@dimen/fab_margin"-->
-    <!--app:srcCompat="@drawable/ic_search" />-->
-
-    <!--</FrameLayout>-->
