@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textview_title"
+        style="@style/TextAppearance.AppCompat.Light.SearchResult.Title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:gravity="top"
+        android:maxLines="@integer/book_list_item_title_max_line"
+        android:paddingBottom="@dimen/book_list_item_title_padding_bottom"
+        android:paddingLeft="@dimen/book_list_item_title_padding_left"
+        android:paddingRight="@dimen/book_list_item_title_padding_right"
+        android:paddingTop="@dimen/book_list_item_title_padding_top" />
+    <TextView
+        android:id="@+id/textview_author"
+        style="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:fontFamily="sans-serif-light"
+        android:maxLines="@integer/book_list_item_author_max_line"
+        android:paddingBottom="@dimen/book_list_item_subtitle_padding_bottom"
+        android:paddingLeft="@dimen/book_list_item_subtitle_padding_left"
+        android:paddingRight="@dimen/book_list_item_subtitle_padding_right"
+        android:textStyle="italic"/>
+
+</LinearLayout>

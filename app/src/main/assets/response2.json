@@ -1,0 +1,865 @@
+{
+  "kind": "books#volumes",
+  "totalItems": 384,
+  "items": [
+    {
+      "kind": "books#volume",
+      "id": "BaZYxBdLKH8C",
+      "etag": "inDyTyw/i1o",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/BaZYxBdLKH8C",
+      "volumeInfo": {
+        "title": "Pro Android C++ with the NDK",
+        "authors": [
+          "Onur Cinar"
+        ],
+        "publisher": "Apress",
+        "publishedDate": "2013-02-02",
+        "description": "Android is one of the major players in the mobile phone market. Android is a mobile platform that is built on the top of Linux operating system. The native-code support on Android offers endless opportunities to application developers, not limited the functionality that is provided by Android framework. Pro Android C++ with the NDK is an advanced tutorial and professional reference for today's more sophisticated app developers now porting, developing or employing C++ and other native code to integrate into the Android platform to run sophisticated native apps and better performing apps in general. Using a game app case study, this book explores tools for troubleshooting, debugging, analyzing memory issues, unit testing, unit test code coverage, performance measurement, on native applications, as well as integrating the Android NDK toolchain into existing Autoconf, Makefile, CMake, or JAM based build systems. Pro Android C++ with the NDK also covers the following: · The Android platform, and getting up to speed with the Android NDK, and exploring the APIs that are provided in native space. An overview of Java Native Interface (JNI), and auto-generating JNI code through Simplified Wrapper and Interface Generator (SWIG). An introduction to Bionic API, native networking. native multithreading, and the C++ Standard Template Library (STL) support. Native graphics and sound using JNI Graphics, OpenGL ES, and OpenSL ES. Debugging and troubleshooting native applications using Logging, GNU Debugger (GDB), Eclipse Debugger, Valgrind, strace, and other tools. Profiling native code using GProf to identify performance bottlenecks, and NEON/SIMD optimization from an advanced perspective, with tips and recommendations.",
+        "industryIdentifiers": [
+          {
+            "type": "ISBN_13",
+            "identifier": "9781430248286"
+          },
+          {
+            "type": "ISBN_10",
+            "identifier": "1430248289"
+          }
+        ],
+        "readingModes": {
+          "text": true,
+          "image": true
+        },
+        "pageCount": 416,
+        "printType": "BOOK",
+        "categories": [
+          "Computers"
+        ],
+        "averageRating": 5.0,
+        "ratingsCount": 1,
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": true,
+        "contentVersion": "1.5.3.0.preview.3",
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=BaZYxBdLKH8C&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=BaZYxBdLKH8C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "language": "en",
+        "previewLink": "http://books.google.fr/books?id=BaZYxBdLKH8C&printsec=frontcover&dq=ndk&hl=&cd=1&source=gbs_api",
+        "infoLink": "https://play.google.com/store/books/details?id=BaZYxBdLKH8C&source=gbs_api",
+        "canonicalVolumeLink": "https://market.android.com/details?id=book-BaZYxBdLKH8C"
+      },
+      "saleInfo": {
+        "country": "FR",
+        "saleability": "FOR_SALE",
+        "isEbook": true,
+        "listPrice": {
+          "amount": 36.01,
+          "currencyCode": "EUR"
+        },
+        "retailPrice": {
+          "amount": 23.41,
+          "currencyCode": "EUR"
+        },
+        "buyLink": "https://play.google.com/store/books/details?id=BaZYxBdLKH8C&rdid=book-BaZYxBdLKH8C&rdot=1&source=gbs_api",
+        "offers": [
+          {
+            "finskyOfferType": 1,
+            "listPrice": {
+              "amountInMicros": 3.601E7,
+              "currencyCode": "EUR"
+            },
+            "retailPrice": {
+              "amountInMicros": 2.341E7,
+              "currencyCode": "EUR"
+            },
+            "giftable": true
+          }
+        ]
+      },
+      "accessInfo": {
+        "country": "FR",
+        "viewability": "PARTIAL",
+        "embeddable": true,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": true,
+          "acsTokenLink": "http://books.google.fr/books/download/Pro_Android_C++_with_the_NDK-sample-epub.acsm?id=BaZYxBdLKH8C&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+        },
+        "pdf": {
+          "isAvailable": true,
+          "acsTokenLink": "http://books.google.fr/books/download/Pro_Android_C++_with_the_NDK-sample-pdf.acsm?id=BaZYxBdLKH8C&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+        },
+        "webReaderLink": "http://books.google.fr/books/reader?id=BaZYxBdLKH8C&hl=&printsec=frontcover&output=reader&source=gbs_api",
+        "accessViewStatus": "SAMPLE",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "Using a game app case study, this book explores tools for troubleshooting, debugging, analyzing memory issues, unit testing, unit test code coverage, performance measurement, on native applications, as well as integrating the Android NDK ..."
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "Ndk-AAAAYAAJ",
+      "etag": "5vND4GOTEto",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/Ndk-AAAAYAAJ",
+      "volumeInfo": {
+        "title": "Histoire de Jules César guerre civile: Du passage du Rubicon à la bataille",
+        "authors": [
+          "Eugène-Georges-Henri-Céleste baron Stoffel"
+        ],
+        "publishedDate": "1887",
+        "industryIdentifiers": [
+          {
+            "type": "OTHER",
+            "identifier": "NYPL:33433000124945"
+          }
+        ],
+        "readingModes": {
+          "text": false,
+          "image": false
+        },
+        "printType": "BOOK",
+        "categories": [
+          "Rome"
+        ],
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": false,
+        "contentVersion": "0.1.0.0.preview.0",
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=Ndk-AAAAYAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=Ndk-AAAAYAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+        },
+        "language": "fr",
+        "previewLink": "http://books.google.fr/books?id=Ndk-AAAAYAAJ&q=ndk&dq=ndk&hl=&cd=2&source=gbs_api",
+        "infoLink": "http://books.google.fr/books?id=Ndk-AAAAYAAJ&dq=ndk&hl=&source=gbs_api",
+        "canonicalVolumeLink": "http://books.google.fr/books/about/Histoire_de_Jules_C%C3%A9sar_guerre_civile_D.html?hl=&id=Ndk-AAAAYAAJ"
+      },
+      "saleInfo": {
+        "country": "FR",
+        "saleability": "NOT_FOR_SALE",
+        "isEbook": false
+      },
+      "accessInfo": {
+        "country": "FR",
+        "viewability": "NO_PAGES",
+        "embeddable": false,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": false
+        },
+        "pdf": {
+          "isAvailable": true
+        },
+        "webReaderLink": "http://books.google.fr/books/reader?id=Ndk-AAAAYAAJ&hl=&printsec=frontcover&output=reader&source=gbs_api",
+        "accessViewStatus": "NONE",
+        "quoteSharingAllowed": false
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "p9dOCwAAQBAJ",
+      "etag": "kkLoVGw9YTo",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/p9dOCwAAQBAJ",
+      "volumeInfo": {
+        "title": "Mastering Android NDK",
+        "authors": [
+          "Sergey Kosarevsky",
+          "Viktor Latypov"
+        ],
+        "publisher": "Packt Publishing Ltd",
+        "publishedDate": "2015-09-30",
+        "description": "Master the skills you need to develop portable, highly-functional Android applications using NDK About This Book Develop portable games using Android NDK and debug them on your desktop Familiarise yourself with different popular C++ libraries on Android and use them in your games Write multi-threaded code with graphics, sound, networking, and resource storage Who This Book Is For If you want to leverage your C++ skills in mobile development and increase the performance of your Android applications, then this is the book for you. Knowledge of C or C++ is assumed, including pointer manipulation, multi-threading, object-oriented programming concepts, and the basics of C++11. It would be an added advantage if you know how to develop applications without any IDE. What You Will LearnWhat You Will Learn Explore popular C++ libraries and use them on Android Write portable, multithreaded native networking code Create portable audio framework using OpenAL Implement portable rendering framework using OpenGL ES 3 Debug mobile applications on your desktop machine Access resources from APK archives Render text with FreeType In Detail Android NDK is used for multimedia applications that require direct access to system resources. NDK is also the key for portability, which in turn allows a reasonably comfortable development and debugging process using familiar tools such as GCC and Clang toolchains. This is a hands-on guide to extending your game development skills with Android NDK. The book takes you through many clear, step-by-step example applications to help you further explore the features of Android NDK and some popular C++ libraries and boost your productivity by debugging the development process. Through the course of this book, you will learn how to write portable multi-threaded native code, use HTTP networking in C++, play audio files, use OpenGL ES 3, and render high-quality text. Each chapter aims to take you one step closer to building your application. By the end of this book, you will be able to create an engaging, complete gaming application. Style and approach This book adopts a step-by-step approach and each chapter is based on the material from the previous ones. The book focuses on putting to your knowledge of C++ use while you develop Android applications of your own.",
+        "industryIdentifiers": [
+          {
+            "type": "ISBN_13",
+            "identifier": "9781785281808"
+          },
+          {
+            "type": "ISBN_10",
+            "identifier": "1785281801"
+          }
+        ],
+        "readingModes": {
+          "text": true,
+          "image": true
+        },
+        "pageCount": 328,
+        "printType": "BOOK",
+        "categories": [
+          "Computers"
+        ],
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": false,
+        "contentVersion": "2.2.2.0.preview.3",
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=p9dOCwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=p9dOCwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "language": "en",
+        "previewLink": "http://books.google.fr/books?id=p9dOCwAAQBAJ&pg=PA2&dq=ndk&hl=&cd=3&source=gbs_api",
+        "infoLink": "https://play.google.com/store/books/details?id=p9dOCwAAQBAJ&source=gbs_api",
+        "canonicalVolumeLink": "https://market.android.com/details?id=book-p9dOCwAAQBAJ"
+      },
+      "saleInfo": {
+        "country": "FR",
+        "saleability": "FOR_SALE",
+        "isEbook": true,
+        "listPrice": {
+          "amount": 37.97,
+          "currencyCode": "EUR"
+        },
+        "retailPrice": {
+          "amount": 24.68,
+          "currencyCode": "EUR"
+        },
+        "buyLink": "https://play.google.com/store/books/details?id=p9dOCwAAQBAJ&rdid=book-p9dOCwAAQBAJ&rdot=1&source=gbs_api",
+        "offers": [
+          {
+            "finskyOfferType": 1,
+            "listPrice": {
+              "amountInMicros": 3.797E7,
+              "currencyCode": "EUR"
+            },
+            "retailPrice": {
+              "amountInMicros": 2.468E7,
+              "currencyCode": "EUR"
+            },
+            "giftable": true
+          }
+        ]
+      },
+      "accessInfo": {
+        "country": "FR",
+        "viewability": "PARTIAL",
+        "embeddable": true,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": true
+        },
+        "pdf": {
+          "isAvailable": true
+        },
+        "webReaderLink": "http://books.google.fr/books/reader?id=p9dOCwAAQBAJ&hl=&printsec=frontcover&output=reader&source=gbs_api",
+        "accessViewStatus": "SAMPLE",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "Start \u003cb\u003eNDK\u003c/b\u003e development for Android using the following list of all the prerequisites \u003cbr\u003e\nyou will need: • The Android SDK: You can find this at http://developer.android.\u003cbr\u003e\ncom/ sdk/index.html. We use revision 24. • The Android \u003cb\u003eNDK\u003c/b\u003e: You can find this at\u003cbr\u003e\n&nbsp;..."
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "cWK4CAAAQBAJ",
+      "etag": "wdGkjUwdSd0",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/cWK4CAAAQBAJ",
+      "volumeInfo": {
+        "title": "Android NDK: Beginner's Guide - Second Edition",
+        "authors": [
+          "Sylvain Ratabouil"
+        ],
+        "publisher": "Packt Publishing Ltd",
+        "publishedDate": "2015-04-28",
+        "description": "Are you an Android Java programmer who needs more performance? Are you a C/C++ developer who doesn’t want to bother with the complexity of Java and its out-of-control garbage collector? Do you want to create fast intensive multimedia applications or games? If you’ve answered yes to any of these questions then this book is for you. With some general knowledge of C/C++ development, you will be able to dive headfirst into native Android development.",
+        "industryIdentifiers": [
+          {
+            "type": "ISBN_13",
+            "identifier": "9781783989652"
+          },
+          {
+            "type": "ISBN_10",
+            "identifier": "1783989653"
+          }
+        ],
+        "readingModes": {
+          "text": true,
+          "image": true
+        },
+        "pageCount": 494,
+        "printType": "BOOK",
+        "categories": [
+          "Computers"
+        ],
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": true,
+        "contentVersion": "1.1.1.0.preview.3",
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=cWK4CAAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=cWK4CAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "language": "en",
+        "previewLink": "http://books.google.fr/books?id=cWK4CAAAQBAJ&pg=PA51&dq=ndk&hl=&cd=4&source=gbs_api",
+        "infoLink": "https://play.google.com/store/books/details?id=cWK4CAAAQBAJ&source=gbs_api",
+        "canonicalVolumeLink": "https://market.android.com/details?id=book-cWK4CAAAQBAJ"
+      },
+      "saleInfo": {
+        "country": "FR",
+        "saleability": "FOR_SALE",
+        "isEbook": true,
+        "listPrice": {
+          "amount": 35.86,
+          "currencyCode": "EUR"
+        },
+        "retailPrice": {
+          "amount": 23.31,
+          "currencyCode": "EUR"
+        },
+        "buyLink": "https://play.google.com/store/books/details?id=cWK4CAAAQBAJ&rdid=book-cWK4CAAAQBAJ&rdot=1&source=gbs_api",
+        "offers": [
+          {
+            "finskyOfferType": 1,
+            "listPrice": {
+              "amountInMicros": 3.586E7,
+              "currencyCode": "EUR"
+            },
+            "retailPrice": {
+              "amountInMicros": 2.331E7,
+              "currencyCode": "EUR"
+            },
+            "giftable": true
+          }
+        ]
+      },
+      "accessInfo": {
+        "country": "FR",
+        "viewability": "PARTIAL",
+        "embeddable": true,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": true
+        },
+        "pdf": {
+          "isAvailable": true
+        },
+        "webReaderLink": "http://books.google.fr/books/reader?id=cWK4CAAAQBAJ&hl=&printsec=frontcover&output=reader&source=gbs_api",
+        "accessViewStatus": "SAMPLE",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "These kinds of projects are not well adapted for native C/C++ development, \u003cbr\u003e\nespecially when it comes to debugging, since \u003cb\u003eNDK\u003c/b\u003e has its own way of reusing \u003cbr\u003e\nnative libraries. 4. android create test-project, android update test-project, and \u003cbr\u003e\nandroid&nbsp;..."
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "b6lAhtOVtF0C",
+      "etag": "grtvKvkX7dU",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/b6lAhtOVtF0C",
+      "volumeInfo": {
+        "title": "Android NDK",
+        "subtitle": "Discover the Native Side of Android and Inject the Power of C/C++ in Your Applications : Beginner's Guide",
+        "authors": [
+          "Sylvain Ratabouil"
+        ],
+        "publisher": "Packt Publishing Ltd",
+        "publishedDate": "2012-01-26",
+        "description": "Android NDK is all about injecting high performance into your apps. This book will show you how to create C/C++ enabled applications and integrate them with Java. You will learn how to access native API and port libraries used in some of the most successful Android applications. Using this practical step-by-step tutorial, highlighted with comments and tricks, discover how to run C/C++ code embedded in a Java application or in a standalone application.",
+        "industryIdentifiers": [
+          {
+            "type": "ISBN_13",
+            "identifier": "9781849691536"
+          },
+          {
+            "type": "ISBN_10",
+            "identifier": "1849691533"
+          }
+        ],
+        "readingModes": {
+          "text": true,
+          "image": true
+        },
+        "pageCount": 422,
+        "printType": "BOOK",
+        "categories": [
+          "Computers"
+        ],
+        "averageRating": 5.0,
+        "ratingsCount": 1,
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": true,
+        "contentVersion": "2.3.4.0.preview.3",
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=b6lAhtOVtF0C&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=b6lAhtOVtF0C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "language": "en",
+        "previewLink": "http://books.google.fr/books?id=b6lAhtOVtF0C&pg=PT731&dq=ndk&hl=&cd=5&source=gbs_api",
+        "infoLink": "https://play.google.com/store/books/details?id=b6lAhtOVtF0C&source=gbs_api",
+        "canonicalVolumeLink": "https://market.android.com/details?id=book-b6lAhtOVtF0C"
+      },
+      "saleInfo": {
+        "country": "FR",
+        "saleability": "FOR_SALE",
+        "isEbook": true,
+        "listPrice": {
+          "amount": 25.31,
+          "currencyCode": "EUR"
+        },
+        "retailPrice": {
+          "amount": 17.72,
+          "currencyCode": "EUR"
+        },
+        "buyLink": "https://play.google.com/store/books/details?id=b6lAhtOVtF0C&rdid=book-b6lAhtOVtF0C&rdot=1&source=gbs_api",
+        "offers": [
+          {
+            "finskyOfferType": 1,
+            "listPrice": {
+              "amountInMicros": 2.531E7,
+              "currencyCode": "EUR"
+            },
+            "retailPrice": {
+              "amountInMicros": 1.772E7,
+              "currencyCode": "EUR"
+            },
+            "giftable": true
+          }
+        ]
+      },
+      "accessInfo": {
+        "country": "FR",
+        "viewability": "PARTIAL",
+        "embeddable": true,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": true
+        },
+        "pdf": {
+          "isAvailable": true
+        },
+        "webReaderLink": "http://books.google.fr/books/reader?id=b6lAhtOVtF0C&hl=&printsec=frontcover&output=reader&source=gbs_api",
+        "accessViewStatus": "SAMPLE",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "Android Gingerbread about / Performance analysis Android makefiles about/ \u003cbr\u003e\nMasteringMakefiles Android Makefiles about/ More on Makefiles AndroidManifest\u003cbr\u003e\n.xml file / Time for action – debugging DroidBlaster Android \u003cb\u003eNDK\u003c/b\u003e / Accessing&nbsp;..."
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "pOktAgAAQBAJ",
+      "etag": "suKT2WW3X3k",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/pOktAgAAQBAJ",
+      "volumeInfo": {
+        "title": "Android NDK Game Development Cookbook",
+        "authors": [
+          "Sergey Kosarevsky",
+          "Viktor Latypov"
+        ],
+        "publisher": "Packt Publishing Ltd",
+        "publishedDate": "2013-11-25",
+        "description": "A systematic guide consisting of over 70 recipes which focus on helping you build portable mobile games and aims to enhance your game development skills with clear instructions.If you are a C++ developer who wants to jump into the world of Android game development and who wants to use the power of existing C++ libraries in your existing Android Java applications, then this book is for you. You need to have basic knowledge of C or C++ including pointer manipulation, multithreading, and object-oriented programming concepts as well as some experience developing applications without using an IDE.",
+        "industryIdentifiers": [
+          {
+            "type": "ISBN_13",
+            "identifier": "9781782167792"
+          },
+          {
+            "type": "ISBN_10",
+            "identifier": "178216779X"
+          }
+        ],
+        "readingModes": {
+          "text": true,
+          "image": true
+        },
+        "pageCount": 320,
+        "printType": "BOOK",
+        "categories": [
+          "Computers"
+        ],
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": true,
+        "contentVersion": "1.1.1.0.preview.3",
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=pOktAgAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=pOktAgAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "language": "en",
+        "previewLink": "http://books.google.fr/books?id=pOktAgAAQBAJ&pg=PT69&dq=ndk&hl=&cd=6&source=gbs_api",
+        "infoLink": "https://play.google.com/store/books/details?id=pOktAgAAQBAJ&source=gbs_api",
+        "canonicalVolumeLink": "https://market.android.com/details?id=book-pOktAgAAQBAJ"
+      },
+      "saleInfo": {
+        "country": "FR",
+        "saleability": "FOR_SALE",
+        "isEbook": true,
+        "listPrice": {
+          "amount": 25.31,
+          "currencyCode": "EUR"
+        },
+        "retailPrice": {
+          "amount": 17.72,
+          "currencyCode": "EUR"
+        },
+        "buyLink": "https://play.google.com/store/books/details?id=pOktAgAAQBAJ&rdid=book-pOktAgAAQBAJ&rdot=1&source=gbs_api",
+        "offers": [
+          {
+            "finskyOfferType": 1,
+            "listPrice": {
+              "amountInMicros": 2.531E7,
+              "currencyCode": "EUR"
+            },
+            "retailPrice": {
+              "amountInMicros": 1.772E7,
+              "currencyCode": "EUR"
+            },
+            "giftable": true
+          }
+        ]
+      },
+      "accessInfo": {
+        "country": "FR",
+        "viewability": "PARTIAL",
+        "embeddable": true,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": true
+        },
+        "pdf": {
+          "isAvailable": true
+        },
+        "webReaderLink": "http://books.google.fr/books/reader?id=pOktAgAAQBAJ&hl=&printsec=frontcover&output=reader&source=gbs_api",
+        "accessViewStatus": "SAMPLE",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "Android \u003cb\u003eNDK\u003c/b\u003e comes with different toolchains—GCC and Clang—of different \u003cbr\u003e\nversions. It has a convenient and simple way to switch between them. Getting \u003cbr\u003e\nready Look throughthe listofthe available toolchains before proceeding. You can \u003cbr\u003e\nfind all&nbsp;..."
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "ZlUHIF0AcH8C",
+      "etag": "TFDTlCWAkbI",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/ZlUHIF0AcH8C",
+      "volumeInfo": {
+        "title": "NDK FINANCIAL SERVICES LIMITED v 1.HAROLD NTORINKANSAH",
+        "publisher": "Ghanaian Judiciary",
+        "readingModes": {
+          "text": true,
+          "image": true
+        },
+        "printType": "BOOK",
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": false,
+        "contentVersion": "0.0.2.0.preview.3",
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=ZlUHIF0AcH8C&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=ZlUHIF0AcH8C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "language": "en",
+        "previewLink": "http://books.google.fr/books?id=ZlUHIF0AcH8C&pg=PP2&dq=ndk&hl=&cd=7&source=gbs_api",
+        "infoLink": "http://books.google.fr/books?id=ZlUHIF0AcH8C&dq=ndk&hl=&source=gbs_api",
+        "canonicalVolumeLink": "http://books.google.fr/books/about/NDK_FINANCIAL_SERVICES_LIMITED_v_1_HAROL.html?hl=&id=ZlUHIF0AcH8C"
+      },
+      "saleInfo": {
+        "country": "FR",
+        "saleability": "NOT_FOR_SALE",
+        "isEbook": false
+      },
+      "accessInfo": {
+        "country": "FR",
+        "viewability": "ALL_PAGES",
+        "embeddable": true,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": true,
+          "acsTokenLink": "http://books.google.fr/books/download/NDK_FINANCIAL_SERVICES_LIMITED_v_1_HAROL-sample-epub.acsm?id=ZlUHIF0AcH8C&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+        },
+        "pdf": {
+          "isAvailable": false
+        },
+        "webReaderLink": "http://books.google.fr/books/reader?id=ZlUHIF0AcH8C&hl=&printsec=frontcover&output=reader&source=gbs_api",
+        "accessViewStatus": "SAMPLE",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "It was during the processes to recover the loans that Glico denied any knowledge \u003cbr\u003e\nof the credit guarantee bonds issued by its General Manager Mr. Derek Amoah \u003cbr\u003e\nalleging fraud and collusion between \u003cb\u003eNDK\u003c/b\u003e, the said Defendants and Glico&#39;s&nbsp;..."
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "U2iIt-NdK-YC",
+      "etag": "SqJbQtXAdn0",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/U2iIt-NdK-YC",
+      "volumeInfo": {
+        "title": "Mob Men on the Make",
+        "authors": [
+          "Eric Summers"
+        ],
+        "publisher": "STARbooks Press",
+        "publishedDate": "2011-09",
+        "description": "Big black cars, gun-toting bodyguards, secret deals, dangerous liaisons and of course, loyalty to the 'family' all conspire together to deliver Mob Men on the Make, the latest anthology edited by Eric Summers. In this erotic Godfather-style collection, bad boys meet in dark rooms, dimly-lit booths, the backseats of limos and on midnight outings on yachts, proving that playing with bad boys requires being bad with the boys.",
+        "industryIdentifiers": [
+          {
+            "type": "ISBN_13",
+            "identifier": "9781934187944"
+          },
+          {
+            "type": "ISBN_10",
+            "identifier": "1934187941"
+          }
+        ],
+        "readingModes": {
+          "text": false,
+          "image": true
+        },
+        "pageCount": 260,
+        "printType": "BOOK",
+        "categories": [
+          "Fiction"
+        ],
+        "maturityRating": "MATURE",
+        "allowAnonLogging": true,
+        "contentVersion": "2.1.0.0.preview.1",
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=U2iIt-NdK-YC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=U2iIt-NdK-YC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "language": "en",
+        "previewLink": "http://books.google.fr/books?id=U2iIt-NdK-YC&printsec=frontcover&dq=ndk&hl=&cd=8&source=gbs_api",
+        "infoLink": "https://play.google.com/store/books/details?id=U2iIt-NdK-YC&source=gbs_api",
+        "canonicalVolumeLink": "https://market.android.com/details?id=book-U2iIt-NdK-YC"
+      },
+      "saleInfo": {
+        "country": "FR",
+        "saleability": "FOR_SALE",
+        "isEbook": true,
+        "listPrice": {
+          "amount": 4.98,
+          "currencyCode": "EUR"
+        },
+        "retailPrice": {
+          "amount": 4.73,
+          "currencyCode": "EUR"
+        },
+        "buyLink": "https://play.google.com/store/books/details?id=U2iIt-NdK-YC&rdid=book-U2iIt-NdK-YC&rdot=1&source=gbs_api",
+        "offers": [
+          {
+            "finskyOfferType": 1,
+            "listPrice": {
+              "amountInMicros": 4980000.0,
+              "currencyCode": "EUR"
+            },
+            "retailPrice": {
+              "amountInMicros": 4730000.0,
+              "currencyCode": "EUR"
+            },
+            "giftable": true
+          }
+        ]
+      },
+      "accessInfo": {
+        "country": "FR",
+        "viewability": "PARTIAL",
+        "embeddable": true,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": false
+        },
+        "pdf": {
+          "isAvailable": true,
+          "acsTokenLink": "http://books.google.fr/books/download/Mob_Men_on_the_Make-sample-pdf.acsm?id=U2iIt-NdK-YC&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+        },
+        "webReaderLink": "http://books.google.fr/books/reader?id=U2iIt-NdK-YC&hl=&printsec=frontcover&output=reader&source=gbs_api",
+        "accessViewStatus": "SAMPLE",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "Big black cars, gun-toting bodyguards, secret deals, dangerous liaisons and of course, loyalty to the &#39;family&#39; all conspire together to deliver Mob Men on the Make, the latest anthology edited by Eric Summers."
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "--VQBQAAQBAJ",
+      "etag": "bP08EZ9+QUo",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/--VQBQAAQBAJ",
+      "volumeInfo": {
+        "title": "Advanced Android Application Development",
+        "authors": [
+          "Joseph Annuzzi Jr.",
+          "Lauren Darcey",
+          "Shane Conder"
+        ],
+        "publisher": "Addison-Wesley Professional",
+        "publishedDate": "2014-11-11",
+        "description": "Advanced Android™ Application Development, Fourth Edition, is the definitive guide to building robust, commercial-grade Android apps. Systematically revised and updated, this guide brings together powerful, advanced techniques for the entire app development cycle, including design, coding, testing, debugging, and distribution. With the addition of quizzes and exercises in every chapter, it is ideal for both professional and classroom use. An outstanding practical reference for the newest Android APIs, this guide provides in-depth explanations of code utilizing key API features and includes downloadable sample apps for nearly every chapter. Together, they provide a solid foundation for any modern app project. Throughout, the authors draw on decades of in-the-trenches experience as professional mobile developers to provide tips and best practices for highly efficient development. They show you how to break through traditional app boundaries with optional features, including the Android NDK, Google Analytics and Android Wear APIs, and Google Play Game Services. New coverage in this edition includes Integrating Google Cloud Messaging into your apps Utilizing the new Google location and Google Maps Android APIs Leveraging in-app billing from Google Play, as well as third-party providers Getting started with the Android Studio IDE Localizing language and using Google Play App Translation services Extending your app’s reach with Lockscreen widgets and DayDreams Leveraging improvements to Notification, Web, SMS, and other APIs Annuzzi has released new source code samples for use with Android Studio. The code updates are posted to the associated blog site: http://advancedandroidbook.blogspot.com/ This title is an indispensable resource for intermediate- to advanced-level Java programmers who are now developing for Android, and for seasoned mobile developers who want to make the most of the new Android platform and hardware. This revamped, newly titled edition is a complete update of Android™ Wireless Application Development, Volume II: Advanced Topics, Third Edition.",
+        "industryIdentifiers": [
+          {
+            "type": "ISBN_13",
+            "identifier": "9780133892451"
+          },
+          {
+            "type": "ISBN_10",
+            "identifier": "013389245X"
+          }
+        ],
+        "readingModes": {
+          "text": true,
+          "image": true
+        },
+        "pageCount": 624,
+        "printType": "BOOK",
+        "categories": [
+          "Computers"
+        ],
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": true,
+        "contentVersion": "2.3.2.0.preview.3",
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=--VQBQAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=--VQBQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "language": "en",
+        "previewLink": "http://books.google.fr/books?id=--VQBQAAQBAJ&pg=PA379&dq=ndk&hl=&cd=9&source=gbs_api",
+        "infoLink": "https://play.google.com/store/books/details?id=--VQBQAAQBAJ&source=gbs_api",
+        "canonicalVolumeLink": "https://market.android.com/details?id=book---VQBQAAQBAJ"
+      },
+      "saleInfo": {
+        "country": "FR",
+        "saleability": "FOR_SALE",
+        "isEbook": true,
+        "listPrice": {
+          "amount": 36.91,
+          "currencyCode": "EUR"
+        },
+        "retailPrice": {
+          "amount": 24.52,
+          "currencyCode": "EUR"
+        },
+        "buyLink": "https://play.google.com/store/books/details?id=--VQBQAAQBAJ&rdid=book---VQBQAAQBAJ&rdot=1&source=gbs_api",
+        "offers": [
+          {
+            "finskyOfferType": 1,
+            "listPrice": {
+              "amountInMicros": 3.691E7,
+              "currencyCode": "EUR"
+            },
+            "retailPrice": {
+              "amountInMicros": 2.452E7,
+              "currencyCode": "EUR"
+            },
+            "giftable": true
+          }
+        ]
+      },
+      "accessInfo": {
+        "country": "FR",
+        "viewability": "PARTIAL",
+        "embeddable": true,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED_FOR_ACCESSIBILITY",
+        "epub": {
+          "isAvailable": false
+        },
+        "pdf": {
+          "isAvailable": false
+        },
+        "webReaderLink": "http://books.google.fr/books/reader?id=--VQBQAAQBAJ&hl=&printsec=frontcover&output=reader&source=gbs_api",
+        "accessViewStatus": "SAMPLE",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "The Android \u003cb\u003eNDK\u003c/b\u003e contains a number of different tools and files, specifically: □□ \u003cbr\u003e\nNative system libraries and headers that are forward compatible with the Android \u003cbr\u003e\nplatform (1.5 and beyond) □□ Tools for compiling and linking native libraries&nbsp;..."
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "8bq9BgAAQBAJ",
+      "etag": "67IcJdFFNw8",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/8bq9BgAAQBAJ",
+      "volumeInfo": {
+        "title": "Android for the BeagleBone Black",
+        "authors": [
+          "Andrew Henderson",
+          "Aravind Prakash"
+        ],
+        "publisher": "Packt Publishing Ltd",
+        "publishedDate": "2015-02-19",
+        "description": "If you are an Android app developer who wants to experiment with the hardware capabilities of the BeagleBone Black platform, then this book is ideal for you. You are expected to have basic knowledge of developing Android apps but no prior hardware experience is required.",
+        "industryIdentifiers": [
+          {
+            "type": "ISBN_13",
+            "identifier": "9781784393458"
+          },
+          {
+            "type": "ISBN_10",
+            "identifier": "1784393452"
+          }
+        ],
+        "readingModes": {
+          "text": true,
+          "image": true
+        },
+        "pageCount": 134,
+        "printType": "BOOK",
+        "categories": [
+          "Computers"
+        ],
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": true,
+        "contentVersion": "2.2.2.0.preview.3",
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=8bq9BgAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=8bq9BgAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "language": "en",
+        "previewLink": "http://books.google.fr/books?id=8bq9BgAAQBAJ&pg=PA30&dq=ndk&hl=&cd=10&source=gbs_api",
+        "infoLink": "https://play.google.com/store/books/details?id=8bq9BgAAQBAJ&source=gbs_api",
+        "canonicalVolumeLink": "https://market.android.com/details?id=book-8bq9BgAAQBAJ"
+      },
+      "saleInfo": {
+        "country": "FR",
+        "saleability": "FOR_SALE",
+        "isEbook": true,
+        "listPrice": {
+          "amount": 12.65,
+          "currencyCode": "EUR"
+        },
+        "retailPrice": {
+          "amount": 8.99,
+          "currencyCode": "EUR"
+        },
+        "buyLink": "https://play.google.com/store/books/details?id=8bq9BgAAQBAJ&rdid=book-8bq9BgAAQBAJ&rdot=1&source=gbs_api",
+        "offers": [
+          {
+            "finskyOfferType": 1,
+            "listPrice": {
+              "amountInMicros": 1.265E7,
+              "currencyCode": "EUR"
+            },
+            "retailPrice": {
+              "amountInMicros": 8990000.0,
+              "currencyCode": "EUR"
+            },
+            "giftable": true
+          }
+        ]
+      },
+      "accessInfo": {
+        "country": "FR",
+        "viewability": "PARTIAL",
+        "embeddable": true,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": true
+        },
+        "pdf": {
+          "isAvailable": true
+        },
+        "webReaderLink": "http://books.google.fr/books/reader?id=8bq9BgAAQBAJ&hl=&printsec=frontcover&output=reader&source=gbs_api",
+        "accessViewStatus": "SAMPLE",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "Adding the header to the \u003cb\u003eNDK\u003c/b\u003e under Linux If you are going to be building apps \u003cbr\u003e\nusing Eclipse ADT under Linux, you will need to have the Android \u003cb\u003eNDK\u003c/b\u003e installed \u003cbr\u003e\non your Linux system. For these instructions, we will assume that you have&nbsp;..."
+      }
+    }
+  ]
+}
