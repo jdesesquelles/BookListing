@@ -2,11 +2,9 @@ package co.fabrk.booklisting.data;
 
 import android.net.Uri;
 import android.util.Log;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -14,7 +12,6 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-
 import co.fabrk.booklisting.model.GBook;
 
 /**
@@ -23,13 +20,6 @@ import co.fabrk.booklisting.model.GBook;
 
 public class BookService {
     private static final String LOG_TAG = "BookService";
-
-    // Pagination: Max Result, startIndex
-    // TODO: 18/12/16 export into dimen
-    static final int pageSize = 10;
-//    static int currentPage = 0;
-    static int startIndex = 0;
-
     private static final String URL_BASE =
             "https://www.googleapis.com/books/v1/volumes?";
     private static final String URL_PARAM_QUERY = "q";
@@ -37,48 +27,39 @@ public class BookService {
     // Field Selection
     private static final String URL_PARAM_FIELDS = "fields";
     private static final String URL_VALUE_FIELDS = String.valueOf("items(volumeInfo/title,volumeInfo/authors)");
-
     private static final String URL_PARAM_MAX_RESULT = "maxResults";
-    private static final String URL_VALUE_MAX_RESULT = String.valueOf(pageSize);
     private static final String URL_PARAM_START_INDEX = "startIndex";
-    private static final String URL_VALUE_START_INDEX = String.valueOf(startIndex);
-
     //    langRestrict="en" or "fr" (two-letter ISO-639-1 code).
     private static final String URL_PARAM_LANG_RESTRICT = "langRestrict";
     private static final String URL_VALUE_LANG_RESTRICT = "en";
     //    filter=partial, full, free-ebooks, paid-ebooks, ebooks
-
     public static final String BOOK_JSON_ITEMS = "items";
     public static final String BOOK_JSON_VOLUME_INFO = "volumeInfo";
     public static final String BOOK_JSON_TITLE = "title";
     public static final String BOOK_JSON_AUTHORS = "authors";
-
     private static String NO_AUTHOR = "No author found";
     private static String NO_TITLE = "Title not found";
 
-    public static ArrayList<GBook> getNextPage(String query, String sCurrentPage) {
-        Integer currentPage = Integer.valueOf(sCurrentPage);
-        currentPage++;
-        startIndex = startIndex + pageSize * (currentPage - 1);
-        return getBookForQuery(query);
+    public static ArrayList<GBook> getNextPage(String query, String page, String pageSize) {
+        return getBookForQuery(query, page, pageSize);
     }
 
-    private static ArrayList<GBook> getBookForQuery(String query) {
-        String url = BuildUrl(query);
+    private static ArrayList<GBook> getBookForQuery(String query, String page, String pageSize) {
+        String url = BuildUrl(query, page, pageSize);
         Log.v(LOG_TAG, "Query Url :" + url.toString());
         String json = getHttpResponse(url);
         return getBookList(json);
     }
 
-    private static String BuildUrl(String query) {
+    private static String BuildUrl(String query, String page, String pageSize) {
         //https://www.googleapis.com/books/v1/volumes?q=ndk&maxResults=10&fields=items(volumeInfo/title,volumeInfo/authors)
         Uri builtUri;
         builtUri = Uri.parse(URL_BASE).buildUpon()
                 .appendQueryParameter(URL_PARAM_QUERY, query)
-                .appendQueryParameter(URL_PARAM_MAX_RESULT, URL_VALUE_MAX_RESULT)
+                .appendQueryParameter(URL_PARAM_MAX_RESULT, pageSize)
                 .appendQueryParameter(URL_PARAM_FIELDS, URL_VALUE_FIELDS)
                 .appendQueryParameter(URL_PARAM_LANG_RESTRICT, URL_VALUE_LANG_RESTRICT)
-                .appendQueryParameter(URL_PARAM_START_INDEX, URL_VALUE_START_INDEX)
+                .appendQueryParameter(URL_PARAM_START_INDEX, String.valueOf(Integer.valueOf(page)*Integer.valueOf(pageSize)))
                 .build();
         return builtUri.toString();
     }
@@ -133,8 +114,6 @@ public class BookService {
             JSONArray bookList = booksJson.getJSONArray(BOOK_JSON_ITEMS);
             ArrayList<GBook> bookArrayList = new ArrayList<GBook>();
             for (int i = 0; i < bookList.length(); i++) {
-//                JSONObject itemJson = bookList.getJSONObject(i);
-//                JSONObject volumeInfoJson = itemJson.getJSONObject(BOOK_JSON_VOLUME_INFO);
                 bookArrayList.add(getBook(bookList.getJSONObject(i)));
             }
             return bookArrayList;
@@ -180,4 +159,5 @@ public class BookService {
         }
         return authorsArrayList;
     }
+
 }

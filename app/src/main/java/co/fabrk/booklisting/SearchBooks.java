@@ -21,7 +21,6 @@ public class SearchBooks extends AppCompatActivity {
 
     BookPresenter presenter;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -112,7 +111,8 @@ public class SearchBooks extends AppCompatActivity {
     private class BookPresenter implements SearchBookPresenter, FetchBookList.BookListCaller {
 
         private BookView mBookView;
-        int currentPage =0;
+        int mCurrentPage = 0;
+        int mPageSize = 10;
 
         public BookPresenter(View view) {
             mBookView = new BookView(view);
@@ -127,7 +127,7 @@ public class SearchBooks extends AppCompatActivity {
         @Override
         public void loadBookList(String query) {
             FetchBookList fetchBookListTask = new FetchBookList(this);
-            fetchBookListTask.execute(query, String.valueOf(currentPage));
+            fetchBookListTask.execute(query, String.valueOf(mCurrentPage), String.valueOf(mPageSize));
         }
 
         @Override

@@ -9,7 +9,7 @@ public class Constants {
     public static String TAG_AUTHOR = "book_author";
 
     public final String URL_PARAM_MAX_RESULT = "maxResults";
-//    public final String URL_VALUE_MAX_RESULT = String.valueOf(pageSize);
+//    public final String URL_VALUE_MAX_RESULT = String.valueOf(mPageSize);
     public final String URL_PARAM_START_INDEX = "startIndex";
 //    public final String URL_VALUE_START_INDEX = String.valueOf(startIndex);
 
