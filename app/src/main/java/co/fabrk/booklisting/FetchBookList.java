@@ -2,7 +2,7 @@ package co.fabrk.booklisting;
 
 import android.os.AsyncTask;
 import java.util.ArrayList;
-import co.fabrk.booklisting.data.BookService;
+
 import co.fabrk.booklisting.model.GBook;
 
 
@@ -31,7 +31,9 @@ public class FetchBookList extends AsyncTask<String, Void, ArrayList<GBook>> {
 
     @Override
     protected ArrayList<GBook> doInBackground(String... params) {
-            return BookService.getNextPage(params[0], params[1], params[2]);
+//            return BookService.getBookForQuery(params[0], params[1], params[2]);
+        return null;
+
     }
 
 

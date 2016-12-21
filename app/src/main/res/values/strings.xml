@@ -1,8 +1,33 @@
 <resources>
+    <!-- UI Strings-->
     <string name="app_name">BookListing</string>
     <string name="action_settings">Settings</string>
     <string name="edit_text_search_text">Search...</string>
-    <string name="NO_AUTHOR">No author found</string>
-    <string name="NO_TITLE">Title not found</string>
+
+    <!-- Error Messages-->
+    <string name="ERROR_JSON_NO_AUTHOR">No author found</string>
+    <string name="ERROR_JSON_NO_TITLE">Title not found</string>
+    <string name="ERROR_NETWORK_NO_NETWORK">No Network</string>
+    <string name="ERROR_NETWORK_NO_SERVER">No Response from the Server</string>
+    <string name="ERROR_NETWORK_FILE_NOT_FOUND">File Not Found</string>
+    <string name="ERROR_NETWORK_BAD_REQUEST">Bad Request</string>
+
+    <!-- Http Request constant strings-->
+    <string name="HTTP_GET">GET</string>
+    <string name="URL_BASE">https://www.googleapis.com/books/v1/volumeskk?</string>
+    <string name="URL_PARAM_QUERY">q</string>
+    <string name="URL_PARAM_FIELDS">fields</string>
+    <string name="URL_VALUE_FIELDS">items(volumeInfo/title,volumeInfo/authors)</string>
+    <string name="URL_PARAM_MAX_RESULT">maxResults</string>
+    <string name="URL_PARAM_START_INDEX">startIndex</string>
+    <string name="URL_PARAM_LANG_RESTRICT">langRestrict</string>
+    <string name="URL_VALUE_LANG_RESTRICT">en</string>
+
+    <!-- Json object names-->
+    <string name="BOOK_JSON_ITEMS">items</string>
+    <string name="BOOK_JSON_VOLUME_INFO">volumeInfo</string>
+    <string name="BOOK_JSON_TITLE">title</string>
+    <string name="BOOK_JSON_AUTHORS">authors</string>
+
 
 </resources>

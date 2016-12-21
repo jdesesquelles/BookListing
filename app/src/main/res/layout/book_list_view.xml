@@ -13,7 +13,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:layout_marginTop="?attr/actionBarSize"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="co.fabrk.booklisting.SearchBooks"
+    tools:context="co.fabrk.booklisting.BookListActivity"
     tools:showIn="@layout/activity_search_books">
 
     <ImageView
@@ -23,7 +23,7 @@
         android:visibility="gone"
         android:src="@drawable/ic_book_black"/>
 
-    <android.support.v7.widget.RecyclerView
+    <ListView
         tools:listitem="@layout/book_item"
         android:id="@+id/books_recycler_view"
         android:layout_width="match_parent"
