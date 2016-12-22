@@ -4,10 +4,6 @@ import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.Observable;
@@ -18,25 +14,25 @@ import co.fabrk.booklisting.model.GBook;
 /**
  * Created by ebal on 21/12/16.
  */
-class BookPresenter implements Observer, SearchBookPresenter {
+class BookPresenter implements Observer, BookContract.SearchBookActionListener {
 
     private BookView mBookView;
-    private BookListAdapter bookListAdapter;
+//    private BookListAdapter bookListAdapter;
     int mCurrentPage = 0;
     int mPageSize = 10;
 
 
     public BookPresenter(BookListActivity bookListActivity, View view, LayoutInflater layoutInflater) {
         BookService.registerObserver(this);
-        mBookView = new BookView(view);
-        bookListAdapter = new BookListAdapter(layoutInflater);
-        mBookView.books_list_view.setAdapter(bookListAdapter);
-        mBookView.searchButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                loadBookList(mBookView.search_books_edit_text_search.getText().toString());
-            }
-        });
+        mBookView = new BookView(view, layoutInflater, this);
+//        bookListAdapter = new BookListAdapter(layoutInflater);
+//        mBookView.books_list_view.setAdapter(bookListAdapter);
+//        mBookView.searchButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                loadBookList(mBookView.search_books_edit_text_search.getText().toString());
+//            }
+//        });
     }
 
     /**
@@ -56,7 +52,8 @@ class BookPresenter implements Observer, SearchBookPresenter {
         outState.putInt(Constants.SAVE_STATE_SCROLL_POSITION, mBookView.books_list_view.getScrollY());
         outState.putInt(Constants.SAVE_STATE_KEY_CURRENT_PAGE, mCurrentPage);
         outState.putInt(Constants.SAVE_STATE_KEY_PAGE_SIZE, mPageSize);
-        outState.putParcelableArrayList(Constants.SAVE_STATE_KEY_BOOK_ARRAY_LIST, bookListAdapter.mBookArrayList);
+        mBookView.saveInstanceState(outState);
+//        outState.putParcelableArrayList(Constants.SAVE_STATE_KEY_BOOK_ARRAY_LIST, bookListAdapter.mBookArrayList);
         return outState;
     }
 
@@ -64,10 +61,11 @@ class BookPresenter implements Observer, SearchBookPresenter {
     public void restoreInstanceState(Bundle inState) {
         mCurrentPage = inState.getInt(Constants.SAVE_STATE_KEY_CURRENT_PAGE);
         mPageSize = inState.getInt(Constants.SAVE_STATE_KEY_CURRENT_PAGE);
-        mBookView.books_list_view.scrollListBy(inState.getInt(Constants.SAVE_STATE_SCROLL_POSITION));
+//        mBookView.books_list_view.scrollListBy(inState.getInt(Constants.SAVE_STATE_SCROLL_POSITION));
         BookService.registerObserver(this);
-        ArrayList<GBook> bookArrayList = inState.getParcelableArrayList(Constants.SAVE_STATE_KEY_BOOK_ARRAY_LIST);
-        bookListAdapter.swapData(bookArrayList);
+        mBookView.restoreInstanceState(inState);
+//        ArrayList<GBook> bookArrayList = inState.getParcelableArrayList(Constants.SAVE_STATE_KEY_BOOK_ARRAY_LIST);
+//        mBookView.updateBookListView(bookArrayList);
     }
 
 
@@ -83,7 +81,8 @@ class BookPresenter implements Observer, SearchBookPresenter {
             String status = ((BookService.ObservableBookArrayList) observable).getmStatus();
             if (Constants.STATUS_OK == status) {
                 ArrayList<GBook> bookArrayList = ((BookService.ObservableBookArrayList) observable).getBookArrayList();
-                bookListAdapter.swapData(bookArrayList);
+                mBookView.updateBookListView(bookArrayList);
+//                bookListAdapter.swapData(bookArrayList);
             } else {
                 if (Constants.ERROR_NETWORK_NO_NETWORK == status) {
                     message = Constants.MESSAGE_HOST_UNREACHABLE;
@@ -97,27 +96,6 @@ class BookPresenter implements Observer, SearchBookPresenter {
                 Snackbar.make(mBookView.mRootView, message, Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
-        }
-    }
-
-    /**
-     * View holder
-     */
-
-    private class BookView {
-        View mRootView;
-        EditText search_books_edit_text_search;
-        ImageView emptyView;
-        ImageButton searchButton;
-        ListView books_list_view;
-
-        public BookView(View rootView) {
-            this.mRootView = rootView;
-            search_books_edit_text_search = (EditText) rootView.findViewById(R.id.search_books_edit_text_search);
-            searchButton = (ImageButton) rootView.findViewById(R.id.searchButton);
-            emptyView = (ImageView) rootView.findViewById(R.id.empty_view);
-            books_list_view = (ListView) rootView.findViewById(R.id.books_recycler_view);
-            books_list_view.setEmptyView(emptyView);
         }
     }
 

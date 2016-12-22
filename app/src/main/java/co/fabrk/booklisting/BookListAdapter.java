@@ -21,6 +21,7 @@ public class BookListAdapter extends BaseAdapter {
         this.layoutInflater = layoutInflater;
     }
 
+
     @Override
     public int getCount() {
         return mBookArrayList.size();
@@ -28,8 +29,11 @@ public class BookListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-//        view = layoutInflater
-//                .inflate(R.layout.book_item, viewGroup, false);
+        if (null == view) {
+            view = layoutInflater
+                    .inflate(R.layout.book_item, viewGroup, false);
+        }
+
         BookAdapterViewHolder holder = new BookAdapterViewHolder(view);
         holder.textview_title.setText(mBookArrayList.get(i).getTitle());
         String authors = new String();
