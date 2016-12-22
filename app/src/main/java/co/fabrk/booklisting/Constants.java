@@ -27,12 +27,10 @@ public class Constants {
     public static String NO_AUTHOR = "No author found";
     public static String NO_TITLE = "Title not found";
     public static String ERR_MESSAGE_NO_SERVER = "No Response from the Server";
-
     public static String ERROR_JSON_NO_AUTHOR = "No author found";
     public static String ERROR_JSON_NO_TITLE = "Title not found";
     public static String ERROR_JSON_NO_ITEM = "Title not found";
     public static String ERROR_JSON_NO_VOLUME_INFO = "Title not found";
-
     public static String ERROR_NETWORK_NO_NETWORK = "No Network, Check connectivity";
     public static String ERROR_NETWORK_NO_RESPONSE = "No Response from the Server";
     public static String ERROR_NETWORK_FILE_NOT_FOUND = "File Not Found";
@@ -41,14 +39,9 @@ public class Constants {
     public static String MESSAGE_HOST_UNREACHABLE = "No Response from the server, Retry Later.";
     public static String MESSAGE_NO_ITEM_FOUND = "No item found in the response, Report an issue";
     public static String MESSAGE_UNKNOWN_ERROR = "Unknown Error";
-
-
-
-
+    public static String MESSAGE_FILE_NOT_FOUND = "File not found on the server";
     public static String STATUS_HTTP_RESPONSE_OK = "STATUS_HTTP_RESPONSE_OK";
-
     public static String ERR_MESSAGE_NO_NETWORK = "Unable to resolve host";
-
     public static String SAVE_STATE_KEY_CURRENT_PAGE = "CurrentPage";
     public static String SAVE_STATE_KEY_PAGE_SIZE = "PageSize";
     public static String SAVE_STATE_KEY_BOOK_ARRAY_LIST = "BookArrayList";

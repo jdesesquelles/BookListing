@@ -16,7 +16,7 @@ import co.fabrk.booklisting.model.GBook;
 
 public class BookListActivity extends AppCompatActivity {
 
-    BookPresenter presenter;
+    SearchBookPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +60,4 @@ public class BookListActivity extends AppCompatActivity {
         super.onRestoreInstanceState(savedInstanceState);
         presenter.restoreInstanceState(savedInstanceState);
     }
-
-
 }

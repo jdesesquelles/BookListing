@@ -18,37 +18,15 @@ import co.fabrk.booklisting.model.GBook;
 /**
  * Created by ebal on 21/12/16.
  */
-public class BookPresenter implements Observer, SearchBookPresenter, FetchBookList.BookListCaller {
+class BookPresenter implements Observer, SearchBookPresenter {
 
-    private BookListActivity bookListActivity;
     private BookView mBookView;
     private BookListAdapter bookListAdapter;
     int mCurrentPage = 0;
     int mPageSize = 10;
 
-    @Override
-    public void update(Observable observable, Object o) {
-        String message;
-        if (null != observable) {
-            String status = ((BookService.ObservableBookArrayList) observable).getmStatus();
-            if (Constants.STATUS_OK == status) {
-                ArrayList<GBook> bookArrayList = ((BookService.ObservableBookArrayList) observable).getBookArrayList();
-                bookListAdapter.swapData(bookArrayList);
-            } else {
-                if (Constants.ERROR_NETWORK_NO_NETWORK == status) {
-                    message = Constants.MESSAGE_HOST_UNREACHABLE;
-
-                } else if (Constants.ERROR_JSON_NO_ITEM == status) {
-                    message = Constants.MESSAGE_NO_ITEM_FOUND;
-                } else message = Constants.MESSAGE_UNKNOWN_ERROR;
-                Snackbar.make(mBookView.mRootView, message, Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        }
-    }
 
     public BookPresenter(BookListActivity bookListActivity, View view, LayoutInflater layoutInflater) {
-        this.bookListActivity = bookListActivity;
         BookService.registerObserver(this);
         mBookView = new BookView(view);
         bookListAdapter = new BookListAdapter(layoutInflater);
@@ -61,23 +39,9 @@ public class BookPresenter implements Observer, SearchBookPresenter, FetchBookLi
         });
     }
 
-    public Bundle saveInstanceState(Bundle outState) {
-        BookService.removeObserver(this);
-        outState.putInt(Constants.SAVE_STATE_SCROLL_POSITION, mBookView.books_list_view.getScrollY());
-        outState.putInt(Constants.SAVE_STATE_KEY_CURRENT_PAGE, mCurrentPage);
-        outState.putInt(Constants.SAVE_STATE_KEY_PAGE_SIZE, mPageSize);
-        outState.putParcelableArrayList(Constants.SAVE_STATE_KEY_BOOK_ARRAY_LIST, bookListAdapter.mBookArrayList);
-        return outState;
-    }
-
-    public void restoreInstanceState(Bundle inState) {
-        mCurrentPage = inState.getInt(Constants.SAVE_STATE_KEY_CURRENT_PAGE);
-        mPageSize = inState.getInt(Constants.SAVE_STATE_KEY_CURRENT_PAGE);
-        mBookView.books_list_view.scrollListBy(inState.getInt(Constants.SAVE_STATE_SCROLL_POSITION));
-        BookService.registerObserver(this);
-        ArrayList<GBook> bookArrayList = inState.getParcelableArrayList(Constants.SAVE_STATE_KEY_BOOK_ARRAY_LIST);
-        bookListAdapter.swapData(bookArrayList);
-    }
+    /**
+     * User Action Listener interface
+     */
 
     @Override
     public void loadBookList(String query) {
@@ -87,9 +51,58 @@ public class BookPresenter implements Observer, SearchBookPresenter, FetchBookLi
     }
 
     @Override
-    public void updateBookList(ArrayList<GBook> bookArrayList) {
+    public Bundle saveInstanceState(Bundle outState) {
+        BookService.removeObserver(this);
+        outState.putInt(Constants.SAVE_STATE_SCROLL_POSITION, mBookView.books_list_view.getScrollY());
+        outState.putInt(Constants.SAVE_STATE_KEY_CURRENT_PAGE, mCurrentPage);
+        outState.putInt(Constants.SAVE_STATE_KEY_PAGE_SIZE, mPageSize);
+        outState.putParcelableArrayList(Constants.SAVE_STATE_KEY_BOOK_ARRAY_LIST, bookListAdapter.mBookArrayList);
+        return outState;
+    }
+
+    @Override
+    public void restoreInstanceState(Bundle inState) {
+        mCurrentPage = inState.getInt(Constants.SAVE_STATE_KEY_CURRENT_PAGE);
+        mPageSize = inState.getInt(Constants.SAVE_STATE_KEY_CURRENT_PAGE);
+        mBookView.books_list_view.scrollListBy(inState.getInt(Constants.SAVE_STATE_SCROLL_POSITION));
+        BookService.registerObserver(this);
+        ArrayList<GBook> bookArrayList = inState.getParcelableArrayList(Constants.SAVE_STATE_KEY_BOOK_ARRAY_LIST);
         bookListAdapter.swapData(bookArrayList);
     }
+
+
+    /**
+     * Observer call back method.
+     * Object contains the status in a String object
+     */
+
+    @Override
+    public void update(Observable observable, Object o) {
+        String message;
+        if (null != observable) {
+            String status = ((BookService.ObservableBookArrayList) observable).getmStatus();
+            if (Constants.STATUS_OK == status) {
+                ArrayList<GBook> bookArrayList = ((BookService.ObservableBookArrayList) observable).getBookArrayList();
+                bookListAdapter.swapData(bookArrayList);
+            } else {
+                if (Constants.ERROR_NETWORK_NO_NETWORK == status) {
+                    message = Constants.MESSAGE_HOST_UNREACHABLE;
+                } else if (Constants.ERROR_NETWORK_NO_RESPONSE == status) {
+                    message = Constants.MESSAGE_HOST_UNREACHABLE;
+                } else if (Constants.ERROR_NETWORK_FILE_NOT_FOUND == status) {
+                    message = Constants.MESSAGE_FILE_NOT_FOUND;
+                } else if (Constants.ERROR_JSON_NO_ITEM == status) {
+                    message = Constants.MESSAGE_NO_ITEM_FOUND;
+                } else message = Constants.MESSAGE_UNKNOWN_ERROR;
+                Snackbar.make(mBookView.mRootView, message, Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        }
+    }
+
+    /**
+     * View holder
+     */
 
     private class BookView {
         View mRootView;

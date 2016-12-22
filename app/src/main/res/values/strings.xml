@@ -14,7 +14,7 @@
 
     <!-- Http Request constant strings-->
     <string name="HTTP_GET">GET</string>
-    <string name="URL_BASE">https://www.googleapis.com/books/v1/volumeskk?</string>
+    <string name="URL_BASE">https://www.googleapis.com/books/v1/volumes?</string>
     <string name="URL_PARAM_QUERY">q</string>
     <string name="URL_PARAM_FIELDS">fields</string>
     <string name="URL_VALUE_FIELDS">items(volumeInfo/title,volumeInfo/authors)</string>

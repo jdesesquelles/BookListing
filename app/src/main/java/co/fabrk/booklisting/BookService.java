@@ -106,13 +106,13 @@ public class BookService {
         String httpResponse = Utilities.getHttpResponse(url);
         ArrayList<GBook> bookArrayList = null;
         if (Constants.ERROR_NETWORK_NO_NETWORK == httpResponse | Constants.ERROR_NETWORK_NO_RESPONSE == httpResponse | Constants.ERROR_NETWORK_FILE_NOT_FOUND == httpResponse) {
-            mStatus = Constants.ERROR_NETWORK_NO_NETWORK;
+            mStatus = httpResponse;
             bookArrayList = null;
         } else {
             bookArrayList = getBookListFromJson(httpResponse);
         }
         observableBookArrayList.setBookArrayList(bookArrayList, mStatus);
-        // mStatus is set to OK by default
+        // mStatus set to OK by default
         mStatus = Constants.STATUS_OK;
     }
 
