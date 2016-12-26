@@ -7,6 +7,7 @@ import org.junit.runner.RunWith;
 
 import java.util.ArrayList;
 
+import co.fabrk.booklisting.data.BookService;
 import co.fabrk.booklisting.model.GBook;
 
 import static org.junit.Assert.*;
@@ -32,7 +33,7 @@ public class TestBookService {
         assertNotNull(bookArrayList);
         assertTrue(bookArrayList.size() >= 1);
 
-//        String status = observable.getBookArrayList();
+        String status = observable.getmStatus();
 
         BookService.removeObserver(observable);
     }

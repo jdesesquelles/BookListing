@@ -20,13 +20,13 @@ public class GBook implements Parcelable {
     }
 
     public String Title;
+
     public ArrayList<String> Authors;
 
     public GBook(String title, ArrayList<String> authors) {
         Authors = authors;
         Title = title;
     }
-
 
     @Override
     public int describeContents() {
@@ -58,4 +58,5 @@ public class GBook implements Parcelable {
             return new GBook[size];
         }
     };
+
 }

@@ -1,4 +1,4 @@
-package co.fabrk.booklisting;
+package co.fabrk.booklisting.booksearch;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import co.fabrk.booklisting.R;
 import co.fabrk.booklisting.model.GBook;
 
 /**
@@ -38,7 +39,7 @@ public class BookListAdapter extends BaseAdapter {
         holder.textview_title.setText(mBookArrayList.get(i).getTitle());
         String authors = new String();
         for (int j = 0; j < mBookArrayList.get(i).getAuthors().size(); j++) {
-            if (null == authors) {
+            if (j == 0) {
                 authors = mBookArrayList.get(i).getAuthors().get(j);
             } else authors = authors + ", " + mBookArrayList.get(i).getAuthors().get(j);
         }
@@ -53,7 +54,7 @@ public class BookListAdapter extends BaseAdapter {
 
     @Override
     public Object getItem(int i) {
-        return null;
+        return mBookArrayList.get(i);
     }
 
     public void swapData(ArrayList<GBook> bookArrayList) {
@@ -61,11 +62,11 @@ public class BookListAdapter extends BaseAdapter {
         notifyDataSetChanged();
     }
 
-    public class BookAdapterViewHolder {
-        public final TextView textview_title;
-        public final TextView textview_author;
+    private class BookAdapterViewHolder {
+        private final TextView textview_title;
+        private final TextView textview_author;
 
-        public BookAdapterViewHolder(View view) {
+        private BookAdapterViewHolder(View view) {
             textview_title = (TextView) view.findViewById(R.id.textview_title);
             textview_author = (TextView) view.findViewById(R.id.textview_author);
         }

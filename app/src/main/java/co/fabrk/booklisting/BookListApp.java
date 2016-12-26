@@ -1,6 +1,8 @@
 package co.fabrk.booklisting;
 
 import android.app.Application;
+import android.content.Context;
+import android.net.ConnectivityManager;
 
 public class BookListApp extends Application {
 
@@ -31,5 +33,13 @@ public class BookListApp extends Application {
         Constants.ERROR_NETWORK_NO_RESPONSE = getString(R.string.ERROR_NETWORK_NO_SERVER);
         Constants.ERROR_NETWORK_FILE_NOT_FOUND = getString(R.string.ERROR_NETWORK_FILE_NOT_FOUND);
         Constants.ERROR_NETWORK_BAD_REQUEST = getString(R.string.ERROR_NETWORK_BAD_REQUEST);
+    }
+
+    public boolean isNetworkConnected() {
+        ConnectivityManager cm =
+                (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        return Utilities.isNetworkConnected(cm);
+
     }
 }

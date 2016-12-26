@@ -1,13 +1,8 @@
-package co.fabrk.booklisting;
+package co.fabrk.booklisting.data;
 
-import java.util.Observable;
-
-import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.AsyncTask;
-import android.util.Log;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -24,9 +19,15 @@ import co.fabrk.booklisting.model.GBook;
  */
 
 public class BookService {
+//    implements } BookServiceApi{
 
     private static ObservableBookArrayList observableBookArrayList = new ObservableBookArrayList();
-    private static String mStatus = Constants.STATUS_OK;
+
+//    private static String mStatus = Constants.STATUS_OK;
+
+//    public static String getmStatus() {
+//        return mStatus;
+//    }
 
     /*********************************************************************/
     /**                                                                 **/
@@ -34,6 +35,7 @@ public class BookService {
     /**                                                                 **/
     /*********************************************************************/
 
+//    @Override
     public static void getBookForQuery(String query, String page, String pageSize) {
         FetchBookList fetchBookListTask = new FetchBookList();
         fetchBookListTask.execute(query, page, pageSize);
@@ -43,28 +45,6 @@ public class BookService {
     /**                                                                 **/
     /**                          Observable                             **/
     /**                                                                 **/
-    /*********************************************************************/
-
-    public static class ObservableBookArrayList extends Observable {
-
-        ArrayList<GBook> mBookArrayList = new ArrayList<>();
-        String mStatus;
-
-        public void setBookArrayList(ArrayList<GBook> bookArrayList, String status) {
-            mBookArrayList = bookArrayList;
-            mStatus = status;
-            setChanged();
-        }
-
-        public String getmStatus() {
-            return mStatus;
-        }
-
-        public ArrayList<GBook> getBookArrayList() {
-            return mBookArrayList;
-        }
-
-    }
 
     public static void registerObserver(Observer observer) {
         observableBookArrayList.addObserver(observer);
@@ -102,18 +82,23 @@ public class BookService {
     /*********************************************************************/
 
     private static void requestBookList(String query, String page, String pageSize) {
-        String url = BuildGoogleBookUrl(query, page, pageSize);
-        String httpResponse = Utilities.getHttpResponse(url);
         ArrayList<GBook> bookArrayList = null;
+        String url = BuildGoogleBookUrl(query, page, pageSize);
+        // Http request is done through a static utility  method
+        String httpResponse = Utilities.getHttpResponse(url);
+        // httpResponse contains the error message in case an exception is thrown
         if (Constants.ERROR_NETWORK_NO_NETWORK == httpResponse | Constants.ERROR_NETWORK_NO_RESPONSE == httpResponse | Constants.ERROR_NETWORK_FILE_NOT_FOUND == httpResponse) {
-            mStatus = httpResponse;
-            bookArrayList = null;
+            observableBookArrayList.setStatus(httpResponse);
+            observableBookArrayList.setBookArrayList(null);
+//            bookArrayList = null;
+            return;
         } else {
             bookArrayList = getBookListFromJson(httpResponse);
+            observableBookArrayList.setBookArrayList(bookArrayList);
+//            mStatus = Constants.STATUS_OK;
+            return;
         }
-        observableBookArrayList.setBookArrayList(bookArrayList, mStatus);
         // mStatus set to OK by default
-        mStatus = Constants.STATUS_OK;
     }
 
     private static String BuildGoogleBookUrl(String query, String page, String pageSize) {
@@ -149,7 +134,8 @@ public class BookService {
             }
             return bookArrayList;
         } catch (JSONException e) {
-            mStatus = Constants.ERROR_JSON_NO_ITEM;
+            observableBookArrayList.setStatus(Constants.ERROR_JSON_NO_ITEM);
+//            mStatus = Constants.ERROR_JSON_NO_ITEM;
             return null;
         }
     }
@@ -159,7 +145,8 @@ public class BookService {
             JSONObject volumeInfoJson = itemJson.getJSONObject(Constants.JSON_BOOK_VOLUME_INFO);
             return new GBook(getBookTitleFromJson(volumeInfoJson), getBookAuthorsFromJson(volumeInfoJson));
         } catch (JSONException e) {
-            mStatus = Constants.ERROR_JSON_NO_ITEM;
+            observableBookArrayList.setStatus(Constants.ERROR_JSON_NO_ITEM);
+//            mStatus = Constants.ERROR_JSON_NO_ITEM;
             return null;
         }
     }

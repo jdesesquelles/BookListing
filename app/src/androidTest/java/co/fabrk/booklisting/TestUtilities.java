@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
+import co.fabrk.booklisting.data.BookService;
+import co.fabrk.booklisting.data.ObservableBookArrayList;
 import co.fabrk.booklisting.model.GBook;
 import co.fabrk.booklisting.utils.PollingCheck;
 
@@ -50,8 +52,8 @@ public class TestUtilities {
 
         @Override
         public void update(Observable observable, Object o) {
-            bookArrayList = ((BookService.ObservableBookArrayList) observable).getBookArrayList();
-            mStatus  = ((BookService.ObservableBookArrayList) observable).getmStatus();
+            bookArrayList = ((ObservableBookArrayList) observable).getBookArrayList();
+            mStatus  = ((ObservableBookArrayList) observable).getStatus(); //BookService.getmStatus();
             mContentChanged = true;
         }
 

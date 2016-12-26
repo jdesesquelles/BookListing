@@ -3,6 +3,7 @@ package co.fabrk.booklisting;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -49,10 +50,13 @@ public class Utilities {
             response = buffer.toString();
         } catch (UnknownHostException e) {
                 response = Constants.ERROR_NETWORK_NO_NETWORK;
+            e.printStackTrace();
         } catch (FileNotFoundException e) {
             response = Constants.ERROR_NETWORK_FILE_NOT_FOUND;
+            e.printStackTrace();
         } catch (IOException e) {
             response = Constants.ERROR_NETWORK_NO_RESPONSE;
+            e.printStackTrace();
         } finally {
             if (urlConnection != null) {
                 urlConnection.disconnect();
@@ -65,6 +69,17 @@ public class Utilities {
             }
             return response;
         }
+    }
+
+    static public  Boolean isNetworkConnected(ConnectivityManager connectivityManager) {
+//        Context context = InstrumentationRegistry.getTargetContext();
+//        ConnectivityManager cm =
+//                (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo activeNetwork = connectivityManager.getActiveNetworkInfo();
+        boolean isConnected = activeNetwork != null &&
+                activeNetwork.isConnectedOrConnecting();
+        return isConnected;
     }
 
 }

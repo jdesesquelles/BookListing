@@ -1,4 +1,4 @@
-package co.fabrk.booklisting;
+package co.fabrk.booklisting.booksearch;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,9 +7,12 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import co.fabrk.booklisting.Constants;
+import co.fabrk.booklisting.R;
 import co.fabrk.booklisting.model.GBook;
 
 /**
@@ -17,41 +20,50 @@ import co.fabrk.booklisting.model.GBook;
  */
 
 class BookView implements BookContract.View {
-    View mRootView;
-    EditText search_books_edit_text_search;
-    ImageView emptyView;
-    ImageButton searchButton;
-    ListView books_list_view;
+    private EditText search_books_edit_text_search;
+    private ListView books_list_view;
+    private ImageView empty_view;
+    private TextView error_message;
     private BookListAdapter bookListAdapter;
-    BookContract.SearchBookActionListener mListener;
+    private BookContract.SearchBookActionListener mListener;
 
 
-    public BookView(View rootView, LayoutInflater layoutInflater, BookContract.SearchBookActionListener listener) {
+    public void setActionListener(BookContract.SearchBookActionListener listener) {
         mListener = listener;
+    }
 
-        mRootView = rootView;
+
+    BookView(View rootView, LayoutInflater layoutInflater) {
+        ImageButton search_button;
         search_books_edit_text_search = (EditText) rootView.findViewById(R.id.search_books_edit_text_search);
+        error_message = (TextView) rootView.findViewById(R.id.error_message);
 
         // Setting the user Actions
-        searchButton = (ImageButton) rootView.findViewById(R.id.searchButton);
-        searchButton.setOnClickListener(new View.OnClickListener() {
+        search_button = (ImageButton) rootView.findViewById(R.id.search_button);
+        search_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mListener.loadBookList(search_books_edit_text_search.getText().toString());
+                String query = search_books_edit_text_search.getText().toString();
+                if (Constants.NULL_STRING.equals(query)) {
+                    showErrorMessage(Constants.MESSAGE_ENTER_TEXT);
+                } else {
+                    mListener.loadBookList(search_books_edit_text_search.getText().toString());
+                }
             }
         });
 
         // Setting the ListView
         books_list_view = (ListView) rootView.findViewById(R.id.books_recycler_view);
-        emptyView = (ImageView) rootView.findViewById(R.id.empty_view);
-        books_list_view.setEmptyView(emptyView);
+        empty_view = (ImageView) rootView.findViewById(R.id.empty_view);
+        books_list_view.setEmptyView(empty_view);
         bookListAdapter = new BookListAdapter(layoutInflater);
         books_list_view.setAdapter(bookListAdapter);
     }
 
     @Override
     public void updateBookListView(ArrayList<GBook> bookArrayList) {
-                bookListAdapter.swapData(bookArrayList);
+        error_message.setVisibility(View.GONE);
+        bookListAdapter.swapData(bookArrayList);
     }
 
     @Override
@@ -68,4 +80,11 @@ class BookView implements BookContract.View {
         updateBookListView(bookArrayList);
     }
 
+    @Override
+    public void showErrorMessage(String message) {
+        books_list_view.setVisibility(View.GONE);
+        empty_view.setVisibility(View.VISIBLE);
+        error_message.setVisibility(View.VISIBLE);
+        error_message.setText(message);
+    }
 }

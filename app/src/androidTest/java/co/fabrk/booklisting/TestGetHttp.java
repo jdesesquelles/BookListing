@@ -29,7 +29,7 @@ public class TestGetHttp {
     public void getHttpNoNetworkTest() {
         // When No network Connection: getHttpResponse should return ERROR_NETWORK_NO_NETWORK
         if (TestUtilities.isNetworkDisconnected()) {
-            String MethodResult = Utilities.getHttpResponse("https://www.googleapis.com/books/v1/volumes?q=ndk&maxResults=10");
+            String MethodResult = Utilities.getHttpResponse("https://www.googleapisw.com/books/v1/volumes?q=ndk&maxResults=10");
             assertEquals(Constants.ERROR_NETWORK_NO_NETWORK, MethodResult);
         } else assertTrue(true);
     }

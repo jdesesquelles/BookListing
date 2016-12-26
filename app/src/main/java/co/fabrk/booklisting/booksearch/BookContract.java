@@ -1,4 +1,4 @@
-package co.fabrk.booklisting;
+package co.fabrk.booklisting.booksearch;
 
 import android.os.Bundle;
 import java.util.ArrayList;
@@ -11,10 +11,13 @@ import co.fabrk.booklisting.model.GBook;
 public interface BookContract {
 
     interface View{
-        public void updateBookListView(ArrayList<GBook> bookArrayList);
-        public Bundle saveInstanceState(Bundle outState);
-        public void restoreInstanceState(Bundle inState);
-        }
+        void updateBookListView(ArrayList<GBook> bookArrayList);
+        Bundle saveInstanceState(Bundle outState);
+        void restoreInstanceState(Bundle inState);
+        void showErrorMessage(String message);
+        void setActionListener(SearchBookActionListener listener);
+
+    }
 
 
     interface SearchBookActionListener {

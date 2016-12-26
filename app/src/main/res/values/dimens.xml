@@ -6,6 +6,7 @@
     <dimen name="edit_text_search_margin">16dp</dimen>
     <dimen name="edit_text_search_margin_start">32dp</dimen>
     <dimen name="edit_text_search_size">24sp</dimen>
+    <dimen name="error_message_text_size">32sp</dimen>
 
     <dimen name="book_list_item_title_padding_bottom">4dp</dimen>
     <dimen name="book_list_item_title_padding_top">4dp</dimen>

@@ -24,6 +24,7 @@ public class Constants {
     public static String JSON_BOOK_TITLE = "title";
     public static String JSON_BOOK_AUTHORS = "authors";
 
+    public static String NULL_STRING = "";
     public static String NO_AUTHOR = "No author found";
     public static String NO_TITLE = "Title not found";
     public static String ERR_MESSAGE_NO_SERVER = "No Response from the Server";
@@ -36,6 +37,7 @@ public class Constants {
     public static String ERROR_NETWORK_FILE_NOT_FOUND = "File Not Found";
     public static String ERROR_NETWORK_BAD_REQUEST = "Bad Request";
     public static String STATUS_OK = "Status OK";
+    public static String MESSAGE_ENTER_TEXT = "Enter a text";
     public static String MESSAGE_HOST_UNREACHABLE = "No Response from the server, Retry Later.";
     public static String MESSAGE_NO_ITEM_FOUND = "No item found in the response, Report an issue";
     public static String MESSAGE_UNKNOWN_ERROR = "Unknown Error";

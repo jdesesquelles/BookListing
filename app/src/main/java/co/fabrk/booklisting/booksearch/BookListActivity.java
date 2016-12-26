@@ -1,15 +1,20 @@
-package co.fabrk.booklisting;
+package co.fabrk.booklisting.booksearch;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
-import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
+
+import co.fabrk.booklisting.R;
+import co.fabrk.booklisting.booksearch.BookContract;
+import co.fabrk.booklisting.booksearch.BookPresenter;
+import co.fabrk.booklisting.booksearch.BookView;
 
 public class BookListActivity extends AppCompatActivity {
 
+    BookView mBookView;
     BookContract.SearchBookActionListener mPresenter;
 
     @Override
@@ -18,7 +23,9 @@ public class BookListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_search_books);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        mPresenter = new BookPresenter(this, (View) findViewById(R.id.root_view), LayoutInflater.from(this));
+        mBookView = new BookView(findViewById(R.id.root_view), LayoutInflater.from(this));
+        mPresenter = new BookPresenter(mBookView, (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE));
+        mBookView.setActionListener(mPresenter);
     }
 
     @Override
