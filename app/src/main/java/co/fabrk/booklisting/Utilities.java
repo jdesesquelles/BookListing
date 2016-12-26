@@ -20,9 +20,6 @@ import java.net.UnknownHostException;
 
 public class Utilities {
 
-    private static String NO_NETWORK = "No Network";
-    private static String NO_SERVER = "No Response from the Server";
-
     public static String getHttpResponse(String stringUrl) {
         // String Url as an input, JSON String as the output
         String connectionMethod = Constants.HTTP_GET;
@@ -72,10 +69,6 @@ public class Utilities {
     }
 
     static public  Boolean isNetworkConnected(ConnectivityManager connectivityManager) {
-//        Context context = InstrumentationRegistry.getTargetContext();
-//        ConnectivityManager cm =
-//                (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
-
         NetworkInfo activeNetwork = connectivityManager.getActiveNetworkInfo();
         boolean isConnected = activeNetwork != null &&
                 activeNetwork.isConnectedOrConnecting();

@@ -37,7 +37,7 @@ public class Constants {
     public static String ERROR_NETWORK_FILE_NOT_FOUND = "File Not Found";
     public static String ERROR_NETWORK_BAD_REQUEST = "Bad Request";
     public static String STATUS_OK = "Status OK";
-    public static String MESSAGE_ENTER_TEXT = "Enter a text";
+    public static String MESSAGE_ENTER_TEXT = "Enter a text and click search";
     public static String MESSAGE_HOST_UNREACHABLE = "No Response from the server, Retry Later.";
     public static String MESSAGE_NO_ITEM_FOUND = "No item found in the response, Report an issue";
     public static String MESSAGE_UNKNOWN_ERROR = "Unknown Error";
@@ -47,8 +47,8 @@ public class Constants {
     public static String SAVE_STATE_KEY_CURRENT_PAGE = "CurrentPage";
     public static String SAVE_STATE_KEY_PAGE_SIZE = "PageSize";
     public static String SAVE_STATE_KEY_BOOK_ARRAY_LIST = "BookArrayList";
-    public static String SAVE_STATE_SCROLL_POSITION = "ScrollPosition";
-
-
-
+    public static String SAVE_STATE_KEY_SCROLL_POSITION = "ScrollPosition";
+    public static String SAVE_STATE_KEY_USER_MESSAGE = "userMessage";
+    public static String SAVE_STATE_KEY_USER_MESSAGE_VISIBILITY = "messageVisibility";
+    public static String SAVE_STATE_KEY_LISTVIEW_VISIBILITY = "listVisibility";
 }

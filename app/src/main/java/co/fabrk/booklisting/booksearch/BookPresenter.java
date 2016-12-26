@@ -2,6 +2,7 @@ package co.fabrk.booklisting.booksearch;
 
 import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.support.annotation.IntegerRes;
 import android.support.annotation.Nullable;
 
 import java.util.ArrayList;
@@ -29,6 +30,7 @@ public class BookPresenter implements Observer, BookContract.SearchBookActionLis
         BookService.registerObserver(this);
         mBookView = bookView;
         mConnectivityManager = connectivityManager;
+        mBookView.showErrorMessage(Constants.MESSAGE_ENTER_TEXT);
     }
 
     /**
@@ -69,8 +71,7 @@ public class BookPresenter implements Observer, BookContract.SearchBookActionLis
 
     @Override
     public void update(Observable observable, Object o) {
-//        String status = BookService.getmStatus();
-        String status = ((ObservableBookArrayList) observable).getStatus();
+        String status = BookService.getStatus();
         if (status.equals(Constants.STATUS_OK)) {
             if (null != observable) {
                 ArrayList<GBook> bookArrayList = ((ObservableBookArrayList) observable).getBookArrayList();

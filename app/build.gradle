@@ -23,30 +23,30 @@ android {
         }
     }
 
-    // Product Flavor is used to inject Classes for testing purpose
-    productFlavors {
-        mock {
-            applicationIdSuffix = ".mock"
-        }
-        prod {
+//    // Product Flavor is used to inject Classes for testing purpose
+//    productFlavors {
+//        mock {
+//            applicationIdSuffix = ".mock"
+//        }
+//        prod {
+//
+//        }
+//    }
 
-        }
-    }
-
-    // Remove mockRelease
-    android.variantFilter { variant ->
-        if(variant.buildType.name.equals('release')
-                && variant.getFlavors().get(0).name.equals('mock')) {
-            variant.setIgnore(true);
-        }
-    }
-
-    // Always show the result of unit tests
-    testOptions.unitTests.all {
-        testLogging {
-            events 'passed', 'skipped', 'failed', 'standardOut', 'standardError'
-        }
-    }
+//    // Remove mockRelease
+//    android.variantFilter { variant ->
+//        if(variant.buildType.name.equals('release')
+//                && variant.getFlavors().get(0).name.equals('mock')) {
+//            variant.setIgnore(true);
+//        }
+//    }
+//
+//    // Always show the result of unit tests
+//    testOptions.unitTests.all {
+//        testLogging {
+//            events 'passed', 'skipped', 'failed', 'standardOut', 'standardError'
+//        }
+//    }
 
 }
 

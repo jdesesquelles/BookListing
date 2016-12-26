@@ -21,16 +21,16 @@ import co.fabrk.booklisting.model.GBook;
 public class BookService {
 
     private static ObservableBookArrayList observableBookArrayList = new ObservableBookArrayList();
+
     private static String mStatus = Constants.STATUS_OK;
 
     public static String getStatus() {
         return mStatus;
     }
 
-    public static void setStatus(String mStatus) {
-        mStatus = mStatus;
+    public static void setStatus(String status) {
+        mStatus = status;
     }
-
 
     /*********************************************************************/
     /**                                                                 **/
@@ -38,7 +38,6 @@ public class BookService {
     /**                                                                 **/
     /*********************************************************************/
 
-//    @Override
     public static void getBookForQuery(String query, String page, String pageSize) {
         FetchBookList fetchBookListTask = new FetchBookList();
         fetchBookListTask.execute(query, page, pageSize);
@@ -48,6 +47,8 @@ public class BookService {
     /**                                                                 **/
     /**                          Observable                             **/
     /**                                                                 **/
+    /*********************************************************************/
+
 
     public static void registerObserver(Observer observer) {
         observableBookArrayList.addObserver(observer);

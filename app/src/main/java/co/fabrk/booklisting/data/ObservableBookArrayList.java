@@ -12,24 +12,10 @@ public class ObservableBookArrayList extends Observable {
 
     ArrayList<GBook> mBookArrayList = new ArrayList<>();
 
-    public void setStatus(String mStatus) {
-        this.mStatus = mStatus;
-    }
-
-    String mStatus = Constants.STATUS_OK;
-
     public void setBookArrayList(ArrayList<GBook> bookArrayList) {
         mBookArrayList = bookArrayList;
         setChanged();
     }
-
-    public String getStatus() {
-        return mStatus;
-    }
-
-
-
-
 
     public ArrayList<GBook> getBookArrayList() {
         return mBookArrayList;

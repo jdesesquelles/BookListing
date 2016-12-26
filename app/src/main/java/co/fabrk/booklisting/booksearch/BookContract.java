@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import co.fabrk.booklisting.model.GBook;
 
 /**
- * This specifies the contract between the view and the mPresenter.
+ *  Specifies the contract between the view and the Presenter.
  */
 
 public interface BookContract {
