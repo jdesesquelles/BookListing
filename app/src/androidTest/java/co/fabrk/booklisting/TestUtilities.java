@@ -36,7 +36,7 @@ public class TestUtilities {
         return !isNetworkConnected();
     }
 
-    static class TestObserver implements Observer {
+    public static class TestObserver implements Observer {
         ArrayList<GBook> bookArrayList = new ArrayList<>();
         String mStatus;
         boolean mContentChanged;
@@ -53,7 +53,7 @@ public class TestUtilities {
         @Override
         public void update(Observable observable, Object o) {
             bookArrayList = ((ObservableBookArrayList) observable).getBookArrayList();
-            mStatus  = ((ObservableBookArrayList) observable).getStatus(); //BookService.getmStatus();
+            mStatus  = BookService.getStatus();
             mContentChanged = true;
         }
 
@@ -63,7 +63,7 @@ public class TestUtilities {
             return new TestObserver(ht);
         }
 
-        private TestObserver(HandlerThread ht) {
+        public TestObserver(HandlerThread ht) {
             mHT = ht;
         }
 

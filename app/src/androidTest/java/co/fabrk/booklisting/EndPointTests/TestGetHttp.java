@@ -1,11 +1,16 @@
-package co.fabrk.booklisting;
+package co.fabrk.booklisting.EndPointTests;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import co.fabrk.booklisting.Constants;
+import co.fabrk.booklisting.TestUtilities;
+import co.fabrk.booklisting.Utilities;
 
 import static org.junit.Assert.*;
 
@@ -30,7 +35,7 @@ public class TestGetHttp {
         // When No network Connection: getHttpResponse should return ERROR_NETWORK_NO_NETWORK
         if (TestUtilities.isNetworkDisconnected()) {
             String MethodResult = Utilities.getHttpResponse("https://www.googleapisw.com/books/v1/volumes?q=ndk&maxResults=10");
-            assertEquals(Constants.ERROR_NETWORK_NO_NETWORK, MethodResult);
+            Assert.assertEquals(Constants.ERROR_NETWORK_NO_NETWORK, MethodResult);
         } else assertTrue(true);
     }
 
@@ -38,7 +43,7 @@ public class TestGetHttp {
     public void getHttpNoServerTest() {
         // when server is unknown: getHttpResponse should return ERROR_NETWORK_NO_RESPONSE
         String MethodResult = Utilities.getHttpResponse("https://www.googleapisw.com/books/v1/volumes?q=ndk&maxResults=10");
-        assertEquals(Constants.ERROR_NETWORK_NO_NETWORK, MethodResult);
+        assertEquals(Constants.ERROR_NETWORK_NO_RESPONSE, MethodResult);
     }
 
     @Test

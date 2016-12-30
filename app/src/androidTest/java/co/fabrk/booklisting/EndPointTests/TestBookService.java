@@ -1,4 +1,4 @@
-package co.fabrk.booklisting;
+package co.fabrk.booklisting.EndPointTests;
 
 import android.support.test.runner.AndroidJUnit4;
 
@@ -7,6 +7,8 @@ import org.junit.runner.RunWith;
 
 import java.util.ArrayList;
 
+import co.fabrk.booklisting.Constants;
+import co.fabrk.booklisting.TestUtilities;
 import co.fabrk.booklisting.data.BookService;
 import co.fabrk.booklisting.model.GBook;
 
@@ -21,7 +23,7 @@ public class TestBookService {
 
     @Test
     public void getBookForQuery() {
-        String query = "https://www.googleapis.com/books/v1/volumes?q=ndk&maxResults=10";
+        String query = "google";
         String page =  String.valueOf(0);
         String pageSize = String.valueOf(10);
         TestUtilities.TestObserver observable = TestUtilities.TestObserver.getTestContentObserver();
@@ -34,6 +36,7 @@ public class TestBookService {
         assertTrue(bookArrayList.size() >= 1);
 
         String status = observable.getmStatus();
+        assertTrue(Constants.STATUS_OK.equals(status));
 
         BookService.removeObserver(observable);
     }

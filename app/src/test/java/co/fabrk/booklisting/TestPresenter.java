@@ -1,18 +1,15 @@
 package co.fabrk.booklisting;
 
-import android.content.Context;
 import android.net.ConnectivityManager;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import co.fabrk.booklisting.booksearch.BookContract;
 import co.fabrk.booklisting.booksearch.BookPresenter;
 import co.fabrk.booklisting.data.BookService;
 
-import static org.junit.Assert.*;
 import static org.mockito.Mockito.verify;
 
 /**
@@ -20,7 +17,7 @@ import static org.mockito.Mockito.verify;
  *
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
-public class PresenterTest {
+public class TestPresenter {
 
     BookPresenter mBookPresenter;
 
@@ -51,7 +48,7 @@ public class PresenterTest {
     @Test
     public void clickOnSearch_emptyTextErrorUi() {
         mBookPresenter.loadBookList(Constants.NULL_STRING);
-        verify(mBookView).showErrorMessage(Constants.MESSAGE_ENTER_TEXT);
+        verify(mBookView).showMessage(Constants.MESSAGE_ENTER_TEXT);
     }
 
 }

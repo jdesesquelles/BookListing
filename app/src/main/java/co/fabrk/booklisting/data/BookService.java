@@ -2,12 +2,14 @@ package co.fabrk.booklisting.data;
 
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.support.annotation.VisibleForTesting;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Observer;
 
 import co.fabrk.booklisting.Constants;
@@ -20,16 +22,16 @@ import co.fabrk.booklisting.model.GBook;
 
 public class BookService {
 
-    private static ObservableBookArrayList observableBookArrayList = new ObservableBookArrayList();
+    private static final ObservableBookArrayList observableBookArrayList = new ObservableBookArrayList();
 
-    private static String mStatus = Constants.STATUS_OK;
+    private static String mStatus = Constants.ERROR_JSON_EMPTY_RESPONSE;
+
+    private static void setStatus(String mStatus) {
+        BookService.mStatus = mStatus;
+    }
 
     public static String getStatus() {
         return mStatus;
-    }
-
-    public static void setStatus(String status) {
-        mStatus = status;
     }
 
     /*********************************************************************/
@@ -49,7 +51,6 @@ public class BookService {
     /**                                                                 **/
     /*********************************************************************/
 
-
     public static void registerObserver(Observer observer) {
         observableBookArrayList.addObserver(observer);
     }
@@ -60,7 +61,7 @@ public class BookService {
 
     /*********************************************************************/
     /**                                                                 **/
-    /**                     NetWork Call Async Tasks                    **/
+    /**                     NetWork Call Async Task                     **/
     /**                                                                 **/
     /*********************************************************************/
 
@@ -81,24 +82,27 @@ public class BookService {
 
     /*********************************************************************/
     /**                                                                 **/
-    /**                     Parsing the Json response                   **/
+    /**                     Requesting Google Book API                  **/
     /**                                                                 **/
     /*********************************************************************/
 
-    private static void requestBookList(String query, String page, String pageSize) {
-        ArrayList<GBook> bookArrayList = null;
+    private static synchronized void requestBookList(String query, String page, String pageSize) {
+        ArrayList<GBook> bookArrayList;
         String url = BuildGoogleBookUrl(query, page, pageSize);
         String httpResponse = Utilities.getHttpResponse(url);
         // httpResponse contains the error message in case an exception is thrown
-        if (Constants.ERROR_NETWORK_NO_NETWORK == httpResponse | Constants.ERROR_NETWORK_NO_RESPONSE == httpResponse | Constants.ERROR_NETWORK_FILE_NOT_FOUND == httpResponse) {
+        if (Constants.ERROR_NETWORK_NO_NETWORK.equals(httpResponse) | Constants.ERROR_NETWORK_NO_RESPONSE.equals(httpResponse) | Constants.ERROR_NETWORK_FILE_NOT_FOUND.equals(httpResponse)) {
             setStatus(httpResponse);
             observableBookArrayList.setBookArrayList(null);
-            return;
         } else {
             bookArrayList = getBookListFromJson(httpResponse);
-            setStatus(Constants.STATUS_OK);
+            if (null != bookArrayList) {
+                if (1 <= bookArrayList.size()) {
+                    setStatus(Constants.STATUS_OK);
+                }
+                else setStatus(Constants.ERROR_JSON_EMPTY_RESPONSE);
+            }
             observableBookArrayList.setBookArrayList(bookArrayList);
-            return;
         }
     }
 
@@ -121,25 +125,51 @@ public class BookService {
     /**                                                                 **/
     /*********************************************************************/
 
-    private static ArrayList<GBook> getBookListFromJson(String jsonStr) {
+    // Return an ArrayList of GBooks from a json raw String
+    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
+    public static ArrayList<GBook> getBookListFromJson(String jsonStr) {
         if (jsonStr == null) {
             return null;
         }
         try {
             JSONObject booksJson = new JSONObject(jsonStr);
-            JSONArray bookList = booksJson.getJSONArray(Constants.JSON_BOOK_ITEMS);
-            ArrayList<GBook> bookArrayList = new ArrayList<GBook>();
-            for (int i = 0; i < bookList.length(); i++) {
-                GBook gBook = getBookFromJson(bookList.getJSONObject(i));
-                if (null != gBook) bookArrayList.add(gBook);
+            Iterator<String> jsonKeySet = booksJson.keys();
+            // For an empty response, setStatus to Empty and return
+            if (!jsonKeySet.hasNext()) {
+                setStatus(Constants.ERROR_JSON_EMPTY_RESPONSE);
+                return null;
             }
-            return bookArrayList;
+            String jsonKey = jsonKeySet.next();
+            // For an error response, setStatus to error and return
+            if (Constants.JSON_BOOK_ERROR.equals(jsonKey)) {
+                setStatus(Constants.ERROR_JSON_INVALID_REQUEST_PARAMETER);
+                return null;
+            }
+            // For a valid response, parse the response
+            if (Constants.JSON_BOOK_ITEMS.equals(jsonKey)) {
+                JSONArray bookList = booksJson.getJSONArray(Constants.JSON_BOOK_ITEMS);
+                ArrayList<GBook> bookArrayList = new ArrayList<>();
+                for (int i = 0; i < bookList.length(); i++) {
+                    GBook gBook = getBookFromJson(bookList.getJSONObject(i));
+                    if (null != gBook) bookArrayList.add(gBook);
+                }
+                if (0 == bookArrayList.size()) {
+                    setStatus(Constants.ERROR_JSON_EMPTY_RESPONSE);
+                }
+                return bookArrayList;
+            }
+            // Otherwise return malformed document error code
+            else {
+                setStatus(Constants.ERROR_JSON_UNEXPECTED_RESPONSE);
+                return null;
+            }
         } catch (JSONException e) {
-            setStatus(Constants.ERROR_JSON_NO_ITEM);
+            setStatus(Constants.ERROR_JSON_MALFORMED_RESPONSE);
             return null;
         }
     }
 
+    // Return A GBook from a json item Object
     private static GBook getBookFromJson(JSONObject itemJson) {
         try {
             JSONObject volumeInfoJson = itemJson.getJSONObject(Constants.JSON_BOOK_VOLUME_INFO);
@@ -150,6 +180,7 @@ public class BookService {
         }
     }
 
+    // Return the Title from the json VolumeInfo Object
     private static String getBookTitleFromJson(JSONObject volumeInfoJson) {
         try {
             return volumeInfoJson.getString(Constants.JSON_BOOK_TITLE);
@@ -158,8 +189,9 @@ public class BookService {
         }
     }
 
+    // Return an ArrayList of authors from the json VolumeInfo Object
     private static ArrayList<String> getBookAuthorsFromJson(JSONObject volumeInfoJson) {
-        ArrayList<String> authorsArrayList = new ArrayList<String>();
+        ArrayList<String> authorsArrayList = new ArrayList<>();
         try {
             JSONArray authorsList = volumeInfoJson.getJSONArray(Constants.JSON_BOOK_AUTHORS);
             for (int j = 0; j < authorsList.length(); j++) {

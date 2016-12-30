@@ -14,7 +14,7 @@ public interface BookContract {
         void updateBookListView(ArrayList<GBook> bookArrayList);
         Bundle saveInstanceState(Bundle outState);
         void restoreInstanceState(Bundle inState);
-        void showErrorMessage(String message);
+        void showMessage(String message);
         void setActionListener(SearchBookActionListener listener);
 
     }

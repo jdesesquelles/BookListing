@@ -2,8 +2,6 @@ package co.fabrk.booklisting.booksearch;
 
 import android.net.ConnectivityManager;
 import android.os.Bundle;
-import android.support.annotation.IntegerRes;
-import android.support.annotation.Nullable;
 
 import java.util.ArrayList;
 import java.util.Observable;
@@ -20,17 +18,17 @@ import co.fabrk.booklisting.data.ObservableBookArrayList;
  */
 public class BookPresenter implements Observer, BookContract.SearchBookActionListener {
 
-    private BookContract.View mBookView;
+    private final BookContract.View mBookView;
     private int mCurrentPage = 0;
     private int mPageSize = 10;
-    private ConnectivityManager mConnectivityManager;
+    private final ConnectivityManager mConnectivityManager;
 
 
     public BookPresenter(BookContract.View bookView, ConnectivityManager connectivityManager) {
         BookService.registerObserver(this);
         mBookView = bookView;
         mConnectivityManager = connectivityManager;
-        mBookView.showErrorMessage(Constants.MESSAGE_ENTER_TEXT);
+        mBookView.showMessage(Constants.MESSAGE_ENTER_TEXT);
     }
 
     /**
@@ -39,8 +37,10 @@ public class BookPresenter implements Observer, BookContract.SearchBookActionLis
 
     @Override
     public void loadBookList(String query) {
-        if (query.equals(Constants.NULL_STRING)) {
-            mBookView.showErrorMessage(Constants.MESSAGE_ENTER_TEXT);
+        if (Constants.NULL_STRING.equals(query)) {
+            mBookView.showMessage(Constants.MESSAGE_ENTER_TEXT);
+        } else if (!Utilities.isNetworkConnected(mConnectivityManager)) {
+            mBookView.showMessage(Constants.MESSAGE_NETWORK_DISCONNECTED);
         } else {
             BookService.getBookForQuery(query, String.valueOf(mCurrentPage), String.valueOf(mPageSize));
         }
@@ -58,7 +58,7 @@ public class BookPresenter implements Observer, BookContract.SearchBookActionLis
     @Override
     public void restoreInstanceState(Bundle inState) {
         mCurrentPage = inState.getInt(Constants.SAVE_STATE_KEY_CURRENT_PAGE);
-        mPageSize = inState.getInt(Constants.SAVE_STATE_KEY_CURRENT_PAGE);
+        mPageSize = inState.getInt(Constants.SAVE_STATE_KEY_PAGE_SIZE);
         BookService.registerObserver(this);
         mBookView.restoreInstanceState(inState);
     }
@@ -72,7 +72,7 @@ public class BookPresenter implements Observer, BookContract.SearchBookActionLis
     @Override
     public void update(Observable observable, Object o) {
         String status = BookService.getStatus();
-        if (status.equals(Constants.STATUS_OK)) {
+        if (Constants.STATUS_OK.equals(status)) {
             if (null != observable) {
                 ArrayList<GBook> bookArrayList = ((ObservableBookArrayList) observable).getBookArrayList();
                 mBookView.updateBookListView(bookArrayList);
@@ -83,13 +83,10 @@ public class BookPresenter implements Observer, BookContract.SearchBookActionLis
     }
 
     private void proceedErrorMessage(String message) {
-        Boolean isNetworkConnected = Utilities.isNetworkConnected(mConnectivityManager);
-        if (isNetworkConnected) {
             if (message.equals(Constants.ERROR_NETWORK_NO_NETWORK)) {
                 message = Constants.MESSAGE_HOST_UNREACHABLE;
             }
-        }
-        mBookView.showErrorMessage(message);
+        mBookView.showMessage(message);
 
     }
 }

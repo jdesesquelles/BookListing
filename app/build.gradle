@@ -5,7 +5,7 @@ android {
     buildToolsVersion "25.0.1"
     defaultConfig {
         applicationId "co.fabrk.booklisting"
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
@@ -19,7 +19,7 @@ android {
         }
         debug {
             // Run code coverage reports by default on debug builds.
-             testCoverageEnabled = true
+             testCoverageEnabled = false
         }
     }
 

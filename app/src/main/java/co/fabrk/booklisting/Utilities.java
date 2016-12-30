@@ -1,9 +1,7 @@
 package co.fabrk.booklisting;
 
-import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -26,7 +24,7 @@ public class Utilities {
         HttpURLConnection urlConnection = null;
         BufferedReader reader = null;
         String response = null;
-        StringBuffer buffer = new StringBuffer();
+        StringBuilder buffer = new StringBuilder();
         try {
             URL url = new URL(stringUrl);
             urlConnection = (HttpURLConnection) url.openConnection();
@@ -39,14 +37,14 @@ public class Utilities {
             reader = new BufferedReader(new InputStreamReader(inputStream));
             String line;
             while ((line = reader.readLine()) != null) {
-                buffer.append(line + "\n");
+                buffer.append(line).append("\n");
             }
             if (buffer.length() == 0) {
                 return null;
             }
             response = buffer.toString();
         } catch (UnknownHostException e) {
-                response = Constants.ERROR_NETWORK_NO_NETWORK;
+                response = Constants.ERROR_NETWORK_NO_RESPONSE;
             e.printStackTrace();
         } catch (FileNotFoundException e) {
             response = Constants.ERROR_NETWORK_FILE_NOT_FOUND;
@@ -61,18 +59,18 @@ public class Utilities {
             if (reader != null) {
                 try {
                     reader.close();
-                } catch (final IOException e) {
+                } catch (final IOException ignored) {
                 }
             }
-            return response;
         }
+        return response;
+
     }
 
     static public  Boolean isNetworkConnected(ConnectivityManager connectivityManager) {
         NetworkInfo activeNetwork = connectivityManager.getActiveNetworkInfo();
-        boolean isConnected = activeNetwork != null &&
+        return activeNetwork != null &&
                 activeNetwork.isConnectedOrConnecting();
-        return isConnected;
     }
 
 }

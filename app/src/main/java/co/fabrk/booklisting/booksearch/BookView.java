@@ -1,14 +1,11 @@
 package co.fabrk.booklisting.booksearch;
 
-import android.content.Context;
 import android.os.Bundle;
-import android.os.IBinder;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -23,14 +20,12 @@ import co.fabrk.booklisting.model.GBook;
  */
 
 class BookView implements BookContract.View {
-    private EditText search_books_edit_text_search;
-    private ListView books_list_view;
-    private ImageView empty_view;
-    private TextView error_message;
-    private BookListAdapter bookListAdapter;
+    private final EditText search_books_edit_text_search;
+    private final ListView books_list_view;
+    private final FrameLayout empty_view;
+    private final TextView error_message;
+    private final BookListAdapter bookListAdapter;
     private BookContract.SearchBookActionListener mListener;
-    private InputMethodManager mInputMethodManager;
-    private IBinder mWindowToken;
 
     public void setActionListener(BookContract.SearchBookActionListener listener) {
         mListener = listener;
@@ -38,8 +33,8 @@ class BookView implements BookContract.View {
 
     BookView(View rootView, LayoutInflater layoutInflater) {
         ImageButton search_button;
-        mInputMethodManager = (InputMethodManager) rootView.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-        mWindowToken = rootView.getWindowToken();
+
+
         search_books_edit_text_search = (EditText) rootView.findViewById(R.id.search_books_edit_text_search);
         error_message = (TextView) rootView.findViewById(R.id.error_message);
 
@@ -48,19 +43,19 @@ class BookView implements BookContract.View {
         search_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String query = search_books_edit_text_search.getText().toString();
-                if (Constants.NULL_STRING.equals(query)) {
-                    showErrorMessage(Constants.MESSAGE_ENTER_TEXT);
+                if (Constants.NULL_STRING.equals(search_books_edit_text_search.getText().toString())) {
+                    showMessage(Constants.MESSAGE_ENTER_TEXT);
                 } else {
-                    mInputMethodManager.hideSoftInputFromWindow(mWindowToken, 0);
                     mListener.loadBookList(search_books_edit_text_search.getText().toString());
                 }
             }
         });
 
+        search_books_edit_text_search.setShowSoftInputOnFocus(true);
+
         // Setting the ListView
         books_list_view = (ListView) rootView.findViewById(R.id.books_recycler_view);
-        empty_view = (ImageView) rootView.findViewById(R.id.empty_view);
+        empty_view = (FrameLayout) rootView.findViewById(R.id.empty_view);
         books_list_view.setEmptyView(empty_view);
         bookListAdapter = new BookListAdapter(layoutInflater);
         books_list_view.setAdapter(bookListAdapter);
@@ -68,7 +63,6 @@ class BookView implements BookContract.View {
 
     @Override
     public void updateBookListView(ArrayList<GBook> bookArrayList) {
-        error_message.setVisibility(View.GONE);
         bookListAdapter.swapData(bookArrayList);
     }
 
@@ -76,32 +70,27 @@ class BookView implements BookContract.View {
     public Bundle saveInstanceState(Bundle outState) {
         outState.putInt(Constants.SAVE_STATE_KEY_SCROLL_POSITION, books_list_view.getScrollY());
         outState.putParcelableArrayList(Constants.SAVE_STATE_KEY_BOOK_ARRAY_LIST, bookListAdapter.mBookArrayList);
-
-        outState.putCharSequence(Constants.SAVE_STATE_KEY_USER_MESSAGE, error_message.getText());
-        outState.putInt(Constants.SAVE_STATE_KEY_USER_MESSAGE_VISIBILITY, error_message.getVisibility());
+        outState.putString(Constants.SAVE_STATE_KEY_USER_MESSAGE, error_message.getText().toString());
+        outState.putInt(Constants.SAVE_STATE_KEY_USER_MESSAGE_VISIBILITY, empty_view.getVisibility());
         outState.putInt(Constants.SAVE_STATE_KEY_LISTVIEW_VISIBILITY, books_list_view.getVisibility());
         return outState;
     }
 
     @Override
     public void restoreInstanceState(Bundle inState) {
-        String error_message = String.valueOf(inState.getCharSequence(Constants.SAVE_STATE_KEY_USER_MESSAGE));
         if (inState.getInt(Constants.SAVE_STATE_KEY_USER_MESSAGE_VISIBILITY) == View.VISIBLE) {
-            showErrorMessage(inState.getCharSequence(Constants.SAVE_STATE_KEY_USER_MESSAGE).toString());
+                showMessage(inState.getString(Constants.SAVE_STATE_KEY_USER_MESSAGE));
         } else {
             inState.getInt(Constants.SAVE_STATE_KEY_LISTVIEW_VISIBILITY, books_list_view.getVisibility());
             books_list_view.scrollListBy(inState.getInt(Constants.SAVE_STATE_KEY_SCROLL_POSITION));
             ArrayList<GBook> bookArrayList = inState.getParcelableArrayList(Constants.SAVE_STATE_KEY_BOOK_ARRAY_LIST);
             updateBookListView(bookArrayList);
         }
-
     }
 
     @Override
-    public void showErrorMessage(String message) {
-        books_list_view.setVisibility(View.GONE);
-        empty_view.setVisibility(View.VISIBLE);
-        error_message.setVisibility(View.VISIBLE);
+    public void showMessage(String message) {
+        bookListAdapter.swapData(null);
         error_message.setText(message);
     }
 }

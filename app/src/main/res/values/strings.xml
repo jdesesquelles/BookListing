@@ -1,18 +1,9 @@
 <resources>
     <!-- UI Strings-->
-    <string name="app_name">BookListing</string>
-    <string name="action_settings">Settings</string>
-    <string name="edit_text_search_text">Search...</string>
+    <string name="app_name">G Book</string>
+    <string name="edit_text_search_text">Search&#8230;</string>
 
-    <!-- Error Messages-->
-    <string name="ERROR_JSON_NO_AUTHOR">No author found</string>
-    <string name="ERROR_JSON_NO_TITLE">Title not found</string>
-    <string name="ERROR_NETWORK_NO_NETWORK">No Network</string>
-    <string name="ERROR_NETWORK_NO_SERVER">No Response from the Server</string>
-    <string name="ERROR_NETWORK_FILE_NOT_FOUND">File Not Found</string>
-    <string name="ERROR_NETWORK_BAD_REQUEST">Bad Request</string>
-
-    <!-- Http Request constant strings-->
+    <!--     // Google Books API Url constants   -->
     <string name="HTTP_GET">GET</string>
     <string name="URL_BASE">https://www.googleapis.com/books/v1/volumes?</string>
     <string name="URL_PARAM_QUERY">q</string>
@@ -24,10 +15,39 @@
     <string name="URL_VALUE_LANG_RESTRICT">en</string>
 
     <!-- Json object names-->
-    <string name="BOOK_JSON_ITEMS">items</string>
-    <string name="BOOK_JSON_VOLUME_INFO">volumeInfo</string>
-    <string name="BOOK_JSON_TITLE">title</string>
-    <string name="BOOK_JSON_AUTHORS">authors</string>
+    <string name="JSON_BOOK_ITEMS">items</string>
+    <string name="JSON_BOOK_VOLUME_INFO">volumeInfo</string>
+    <string name="JSON_BOOK_TITLE">title</string>
+    <string name="JSON_BOOK_AUTHORS">authors</string>
+    <string name="JSON_BOOK_ERROR">error</string>
 
+    <string name="STATUS_OK">Status OK</string>
+    <!-- Error Messages-->
+    <string name="ERROR_JSON_NO_AUTHOR">No author found</string>
+    <string name="ERROR_JSON_NO_TITLE">Title not found</string>
+    <string name="ERROR_NETWORK_NO_NETWORK">No Network, Check connectivity"</string>
+    <string name="ERROR_NETWORK_NO_RESPONSE">No Response from the Server"</string>
+    <string name="ERROR_NETWORK_FILE_NOT_FOUND">File Not Found</string>
+    <string name="ERROR_NETWORK_BAD_REQUEST">Bad Request</string>
+
+    <string name="ERROR_JSON_NO_ITEM">No Item</string>
+    <string name="ERROR_JSON_INVALID_REQUEST_PARAMETER">Invalid Request parameters</string>
+    <string name="ERROR_JSON_EMPTY_RESPONSE">No Result found</string>
+    <string name="ERROR_JSON_UNEXPECTED_RESPONSE">Unexpected Response</string>
+    <string name="ERROR_JSON_MALFORMED_RESPONSE">Malformed Response</string>
+
+    // User Messages
+    <string name="MESSAGE_ENTER_TEXT">Enter a text and click search</string>
+    <string name="MESSAGE_NETWORK_DISCONNECTED">No Network, Check connectivity</string>
+    <string name="MESSAGE_HOST_UNREACHABLE">No Response from the server, Retry Later.</string>
+
+    <!--    // Instance State Value Keys -->
+    <string name="SAVE_STATE_KEY_CURRENT_PAGE">CurrentPage</string>
+    <string name="SAVE_STATE_KEY_PAGE_SIZE">PageSize</string>
+    <string name="SAVE_STATE_KEY_BOOK_ARRAY_LIST">BookArrayList</string>
+    <string name="SAVE_STATE_KEY_SCROLL_POSITION">ScrollPosition</string>
+    <string name="SAVE_STATE_KEY_USER_MESSAGE">userMessage</string>
+    <string name="SAVE_STATE_KEY_USER_MESSAGE_VISIBILITY">messageVisibility</string>
+    <string name="SAVE_STATE_KEY_LISTVIEW_VISIBILITY">listVisibility</string>
 
 </resources>

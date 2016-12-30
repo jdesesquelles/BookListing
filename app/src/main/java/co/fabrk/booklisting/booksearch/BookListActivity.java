@@ -14,8 +14,7 @@ import co.fabrk.booklisting.booksearch.BookView;
 
 public class BookListActivity extends AppCompatActivity {
 
-    BookView mBookView;
-    BookContract.SearchBookActionListener mPresenter;
+    private BookContract.SearchBookActionListener mPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +22,7 @@ public class BookListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_search_books);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        mBookView = new BookView(findViewById(R.id.root_view), LayoutInflater.from(this));
+        BookView mBookView = new BookView(findViewById(R.id.root_view), LayoutInflater.from(this));
         mPresenter = new BookPresenter(mBookView, (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE));
         mBookView.setActionListener(mPresenter);
 

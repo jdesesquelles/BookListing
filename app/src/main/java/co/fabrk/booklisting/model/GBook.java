@@ -19,9 +19,9 @@ public class GBook implements Parcelable {
         return Title;
     }
 
-    public String Title;
+    private String Title;
 
-    public ArrayList<String> Authors;
+    private ArrayList<String> Authors;
 
     public GBook(String title, ArrayList<String> authors) {
         Authors = authors;
@@ -42,7 +42,7 @@ public class GBook implements Parcelable {
     public GBook() {
     }
 
-    protected GBook(Parcel in) {
+    private GBook(Parcel in) {
         this.Title = in.readString();
         this.Authors = in.createStringArrayList();
     }

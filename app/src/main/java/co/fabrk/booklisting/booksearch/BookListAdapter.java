@@ -14,9 +14,9 @@ import co.fabrk.booklisting.model.GBook;
 /**
  * Created by ebal on 21/12/16.
  */
-public class BookListAdapter extends BaseAdapter {
+class BookListAdapter extends BaseAdapter {
     public ArrayList<GBook> mBookArrayList = new ArrayList<>();
-    LayoutInflater layoutInflater;
+    private final LayoutInflater layoutInflater;
 
     public BookListAdapter(LayoutInflater layoutInflater) {
         this.layoutInflater = layoutInflater;
@@ -37,7 +37,7 @@ public class BookListAdapter extends BaseAdapter {
 
         BookAdapterViewHolder holder = new BookAdapterViewHolder(view);
         holder.textview_title.setText(mBookArrayList.get(i).getTitle());
-        String authors = new String();
+        String authors = "";
         for (int j = 0; j < mBookArrayList.get(i).getAuthors().size(); j++) {
             if (j == 0) {
                 authors = mBookArrayList.get(i).getAuthors().get(j);
@@ -58,7 +58,8 @@ public class BookListAdapter extends BaseAdapter {
     }
 
     public void swapData(ArrayList<GBook> bookArrayList) {
-        mBookArrayList = bookArrayList;
+        if (null == bookArrayList) mBookArrayList.clear();
+        else mBookArrayList = bookArrayList;
         notifyDataSetChanged();
     }
 
